@@ -1,0 +1,35 @@
+# HuDex pattern configuration — edit without redeploying.
+# Override file location: set HUDEX_PATTERNS_FILE=/path/to/patterns.yml
+
+entity_patterns:
+  money:   '(?:USD|EUR|\$|€)\s?\d[\d,]*(?:\.\d+)?\s?(?:k|m|million|thousand)?'
+  email:   '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}'
+  account: '\b(?:ACC|IBAN|REF)[-\s]?[A-Z0-9]{4,}\b'
+  date:    '\b\d{4}-\d{2}-\d{2}\b'
+  actor:   '\b[A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ][a-zäöüß]+\b'
+
+suspicious_vocab:
+  - "off the books"
+  - "off-book"
+  - "no invoice"
+  - "no trace"
+  - "no paperwork"
+  - "do not log"
+  - "delete this"
+  - "stay quiet"
+  - "keep this between"
+  - "shell entity"
+  - "shell company"
+  - "intermediary"
+  - "kickback"
+  - "bribe"
+  - "launder"
+  - "laundering"
+  - "untraceable"
+  - "offshore"
+  - "placeholder"
+  - "cash only"
+  - "settle in cash"
+  - "strictly off"
+  - "coded as"
+  - "skips approval"

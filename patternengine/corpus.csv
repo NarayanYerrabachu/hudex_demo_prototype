@@ -1,0 +1,113 @@
+id,text,channel,date
+DOC-0014,"Sara Klein flagged a duplicate invoice REF-1014; finance to reconcile with Omar Faris. Standard process, all good.",procurement,2025-08-15
+DOC-0003,Lena Roth flagged a duplicate invoice REF-1003; finance to reconcile with Omar Faris. Copying the wider team for visibility.,procurement,2025-08-04
+DOC-0082,"Payroll run approved by Omar Faris; Tomas Berg double-checked the totals, account ACC-1082. Quick one, handled.",finance_routine,2025-08-27
+DOC-0087,"Payroll run approved by Lena Roth; Yuki Sato double-checked the totals, account ACC-1087. Flagged to the ops channel earlier today.",finance_routine,2025-08-04
+DOC-0107,"Keep this between us Marcus Vale — the Yuki Sato payment skips approval entirely, settle in cash, no paperwork.",comms_misc,2025-08-24
+DOC-0079,"Payroll run approved by Marcus Vale; Yuki Sato double-checked the totals, account ACC-1079. Low priority, revisit next sprint.",finance_routine,2025-08-24
+DOC-0092,"Payroll run approved by Yuki Sato; Lena Roth double-checked the totals, account ACC-1092. Routine, closing the ticket.",finance_routine,2025-08-09
+DOC-0095,"Marcus Vale reviewed the expense report from Priya Anand; within policy, approved. Same as last month, nothing unusual.",finance_routine,2025-08-12
+DOC-0062,Shipment from the Hamburg depot delayed; Yuki Sato coordinating with carrier on 2025-08-12. Adding to the tracker.,logistics,2025-08-07
+DOC-0037,"Reference check done for the Lena Roth candidate; background clean, start date agreed. Updated the shared sheet accordingly.",hiring,2025-08-10
+DOC-0074,"David Okoye reports container ACC-1074 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",logistics,2025-08-19
+DOC-0094,"Monthly close completed by Sara Klein; all ledgers reconciled, no exceptions noted. Standard process, all good.",finance_routine,2025-08-11
+DOC-0042,Marcus Vale asked Omar Faris about headcount budget and the hiring plan next quarter. Adding to the tracker.,hiring,2025-08-15
+DOC-0041,"David Okoye shared the interview scorecards with Tomas Berg; strong shortlist this cycle. Low priority, revisit next sprint.",hiring,2025-08-14
+DOC-0085,"Omar Faris reviewed the expense report from David Okoye; within policy, approved. Copying the wider team for visibility.",finance_routine,2025-08-02
+DOC-0053,"Route optimisation review with Priya Anand and Tomas Berg; fuel costs up, margins tightening. Adding to the tracker.",logistics,2025-08-26
+DOC-0076,"David Okoye reports container ACC-1076 cleared customs, onward route to Lyon confirmed. Quick one, handled.",logistics,2025-08-21
+DOC-0081,"Sara Klein reviewed the expense report from Tomas Berg; within policy, approved. Adding to the tracker.",finance_routine,2025-08-26
+DOC-0067,"Omar Faris reports container ACC-1067 cleared customs, onward route to Lyon confirmed. Routine, closing the ticket.",logistics,2025-08-12
+DOC-0047,Sara Klein interviewed candidates for the analyst role; Omar Faris runs the final round. Follow-up call booked for Thursday.,hiring,2025-08-20
+DOC-0071,"Route optimisation review with Priya Anand and Yuki Sato; fuel costs up, margins tightening. Same as last month, nothing unusual.",logistics,2025-08-16
+DOC-0099,"Tomas Berg reviewed the expense report from Priya Anand; within policy, approved. Flagged to the ops channel earlier today.",finance_routine,2025-08-16
+DOC-0078,"Monthly close completed by Marcus Vale; all ledgers reconciled, no exceptions noted. Adding to the tracker.",finance_routine,2025-08-23
+DOC-0072,"Route optimisation review with Yuki Sato and Omar Faris; fuel costs up, margins tightening. Flagged to the ops channel earlier today.",logistics,2025-08-17
+DOC-0059,"Omar Faris reports container ACC-1059 cleared customs, onward route to Lyon confirmed. Same as last month, nothing unusual.",logistics,2025-08-04
+DOC-0033,David Okoye shared the interview scorecards with Omar Faris; strong shortlist this cycle. Looping in the regional lead.,hiring,2025-08-06
+DOC-0105,Marcus Vale the off-book transfer to ACC-99812 must never appear in the ledger; settle quietly offshore.,comms_misc,2025-08-22
+DOC-0109,"Per Marcus Vale, the kickback to David Okoye gets coded as marketing; EUR 120,000, strictly off the books.",comms_misc,2025-08-26
+DOC-0026,"Reference check done for the Yuki Sato candidate; background clean, start date agreed. Quick one, handled.",hiring,2025-08-27
+DOC-0008,"Purchase order to David Okoye processed; standard 30 day terms, account ACC-1008. Adding to the tracker.",procurement,2025-08-09
+DOC-0045,"Omar Faris interviewed candidates for the analyst role; Priya Anand runs the final round. Quick one, handled.",hiring,2025-08-18
+DOC-0040,Marcus Vale shared the interview scorecards with Omar Faris; strong shortlist this cycle. Noted in the weekly sync.,hiring,2025-08-13
+DOC-0046,"Reference check done for the Tomas Berg candidate; background clean, start date agreed. Flagged to the ops channel earlier today.",hiring,2025-08-19
+DOC-0012,"Purchase order to Tomas Berg processed; standard 30 day terms, account ACC-1012. No action needed for now.",procurement,2025-08-13
+DOC-0097,"Monthly close completed by Lena Roth; all ledgers reconciled, no exceptions noted. Follow-up call booked for Thursday.",finance_routine,2025-08-14
+DOC-0054,"Yuki Sato reports container ACC-1054 cleared customs, onward route to Lyon confirmed. Discussed briefly over lunch.",logistics,2025-08-27
+DOC-0030,Yuki Sato asked Lena Roth about headcount budget and the hiring plan next quarter. Flagged to the ops channel earlier today.,hiring,2025-08-03
+DOC-0005,"Marcus Vale approved the procurement request from Tomas Berg for new laptops, refurbished batch. Updated the shared sheet accordingly.",procurement,2025-08-06
+DOC-0096,"Payroll run approved by Lena Roth; Marcus Vale double-checked the totals, account ACC-1096. Discussed briefly over lunch.",finance_routine,2025-08-13
+DOC-0049,Offer extended to a new hire in the data team; onboarding planned with Sara Klein. Noted in the weekly sync.,hiring,2025-08-22
+DOC-0052,"Sara Klein reports container ACC-1052 cleared customs, onward route to Lyon confirmed. Discussed briefly over lunch.",logistics,2025-08-25
+DOC-0056,Shipment from the Hamburg depot delayed; Tomas Berg coordinating with carrier on 2025-08-12. Follow-up call booked for Thursday.,logistics,2025-08-01
+DOC-0108,"Marcus Vale: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",comms_misc,2025-08-25
+DOC-0091,"Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Updated the shared sheet accordingly.",finance_routine,2025-08-08
+DOC-0019,Omar Faris flagged a duplicate invoice REF-1019; finance to reconcile with Marcus Vale. Copying the wider team for visibility.,procurement,2025-08-20
+DOC-0058,"Route optimisation review with Lena Roth and Omar Faris; fuel costs up, margins tightening. Low priority, revisit next sprint.",logistics,2025-08-03
+DOC-0061,Sara Klein escalated a warehouse capacity issue affecting the EUR 80k order. Copying the wider team for visibility.,logistics,2025-08-06
+DOC-0068,"David Okoye reports container ACC-1068 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",logistics,2025-08-13
+DOC-0035,Sara Klein shared the interview scorecards with Lena Roth; strong shortlist this cycle. Will circulate the summary by Friday.,hiring,2025-08-08
+DOC-0021,"Vendor Tomas Berg confirmed delivery of office hardware, invoice REF-1021 for $12,400. Standard process, all good.",procurement,2025-08-22
+DOC-0023,"Vendor Omar Faris confirmed delivery of office hardware, invoice REF-1023 for $12,400. No action needed for now.",procurement,2025-08-24
+DOC-0073,"Shipment from the Hamburg depot delayed; Sara Klein coordinating with carrier on 2025-08-12. Awaiting sign-off, should be quick.",logistics,2025-08-18
+DOC-0000,"Purchase order to David Okoye processed; standard 30 day terms, account ACC-1000. Will circulate the summary by Friday.",procurement,2025-08-01
+DOC-0028,"Tomas Berg shared the interview scorecards with Lena Roth; strong shortlist this cycle. Awaiting sign-off, should be quick.",hiring,2025-08-01
+DOC-0077,"Shipment from the Hamburg depot delayed; Marcus Vale coordinating with carrier on 2025-08-12. Quick one, handled.",logistics,2025-08-22
+DOC-0066,"Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Standard process, all good.",logistics,2025-08-11
+DOC-0011,"Purchase order to Omar Faris processed; standard 30 day terms, account ACC-1011. Standard process, all good.",procurement,2025-08-12
+DOC-0080,"Marcus Vale reviewed the expense report from Yuki Sato; within policy, approved. Copying the wider team for visibility.",finance_routine,2025-08-25
+DOC-0100,"Sara Klein reviewed the expense report from Marcus Vale; within policy, approved. Follow-up call booked for Thursday.",finance_routine,2025-08-17
+DOC-0018,"Purchase order to Sara Klein processed; standard 30 day terms, account ACC-1018. Routine, closing the ticket.",procurement,2025-08-19
+DOC-0075,David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Noted in the weekly sync.,logistics,2025-08-20
+DOC-0015,"Purchase order to Lena Roth processed; standard 30 day terms, account ACC-1015. Awaiting sign-off, should be quick.",procurement,2025-08-16
+DOC-0038,Priya Anand interviewed candidates for the analyst role; Marcus Vale runs the final round. Adding to the tracker.,hiring,2025-08-11
+DOC-0036,"Reference check done for the Yuki Sato candidate; background clean, start date agreed. Updated the shared sheet accordingly.",hiring,2025-08-09
+DOC-0089,"Priya Anand reviewed the expense report from Sara Klein; within policy, approved. Low priority, revisit next sprint.",finance_routine,2025-08-06
+DOC-0048,"Reference check done for the David Okoye candidate; background clean, start date agreed. Noted in the weekly sync.",hiring,2025-08-21
+DOC-0010,"Vendor Priya Anand confirmed delivery of office hardware, invoice REF-1010 for $12,400. Awaiting sign-off, should be quick.",procurement,2025-08-11
+DOC-0007,"Purchase order to Yuki Sato processed; standard 30 day terms, account ACC-1007. Low priority, revisit next sprint.",procurement,2025-08-08
+DOC-0020,"Purchase order to Omar Faris processed; standard 30 day terms, account ACC-1020. Copying the wider team for visibility.",procurement,2025-08-21
+DOC-0088,"Payroll run approved by David Okoye; Omar Faris double-checked the totals, account ACC-1088. Flagged to the ops channel earlier today.",finance_routine,2025-08-05
+DOC-0103,"Payroll run approved by Lena Roth; Tomas Berg double-checked the totals, account ACC-1103. Discussed briefly over lunch.",finance_routine,2025-08-20
+DOC-0009,"Purchase order to Lena Roth processed; standard 30 day terms, account ACC-1009. Copying the wider team for visibility.",procurement,2025-08-10
+DOC-0101,"Monthly close completed by David Okoye; all ledgers reconciled, no exceptions noted. Copying the wider team for visibility.",finance_routine,2025-08-18
+DOC-0016,"Sara Klein approved the procurement request from Lena Roth for new laptops, refurbished batch. Quick one, handled.",procurement,2025-08-17
+DOC-0006,"Vendor Priya Anand confirmed delivery of office hardware, invoice REF-1006 for $12,400. Flagged to the ops channel earlier today.",procurement,2025-08-07
+DOC-0106,"Confidential Tomas Berg: launder the surplus via the Yuki Sato intermediary, cash only, no invoice trail.",comms_misc,2025-08-23
+DOC-0051,"Recruiter update from Tomas Berg: pipeline healthy, two senior roles still open. Routine, closing the ticket.",hiring,2025-08-24
+DOC-0017,Marcus Vale flagged a duplicate invoice REF-1017; finance to reconcile with Sara Klein. Copying the wider team for visibility.,procurement,2025-08-18
+DOC-0025,"Purchase order to David Okoye processed; standard 30 day terms, account ACC-1025. Discussed briefly over lunch.",procurement,2025-08-26
+DOC-0043,Yuki Sato shared the interview scorecards with Lena Roth; strong shortlist this cycle. Follow-up call booked for Thursday.,hiring,2025-08-16
+DOC-0029,"Tomas Berg shared the interview scorecards with Sara Klein; strong shortlist this cycle. Awaiting sign-off, should be quick.",hiring,2025-08-02
+DOC-0027,David Okoye interviewed candidates for the analyst role; Priya Anand runs the final round. Updated the shared sheet accordingly.,hiring,2025-08-28
+DOC-0039,"Reference check done for the David Okoye candidate; background clean, start date agreed. Same as last month, nothing unusual.",hiring,2025-08-12
+DOC-0098,"Monthly close completed by David Okoye; all ledgers reconciled, no exceptions noted. Flagged to the ops channel earlier today.",finance_routine,2025-08-15
+DOC-0050,Tomas Berg shared the interview scorecards with Sara Klein; strong shortlist this cycle. Copying the wider team for visibility.,hiring,2025-08-23
+DOC-0069,Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Adding to the tracker.,logistics,2025-08-14
+DOC-0063,"David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Same as last month, nothing unusual.",logistics,2025-08-08
+DOC-0090,"Omar Faris reviewed the expense report from Lena Roth; within policy, approved. Discussed briefly over lunch.",finance_routine,2025-08-07
+DOC-0055,"Omar Faris reports container ACC-1055 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",logistics,2025-08-28
+DOC-0083,"Tomas Berg submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",finance_routine,2025-08-28
+DOC-0084,"David Okoye reviewed the expense report from Priya Anand; within policy, approved. Low priority, revisit next sprint.",finance_routine,2025-08-01
+DOC-0013,"Lena Roth approved the procurement request from Tomas Berg for new laptops, refurbished batch. Looping in the regional lead.",procurement,2025-08-14
+DOC-0111,"Per Marcus Vale, the kickback to Priya Anand gets coded as marketing; EUR 120,000, strictly off the books.",comms_misc,2025-08-28
+DOC-0031,David Okoye interviewed candidates for the analyst role; Lena Roth runs the final round. Discussed briefly over lunch.,hiring,2025-08-04
+DOC-0060,"Omar Faris reports container ACC-1060 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",logistics,2025-08-05
+DOC-0065,Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Flagged to the ops channel earlier today.,logistics,2025-08-10
+DOC-0024,"Vendor Omar Faris confirmed delivery of office hardware, invoice REF-1024 for $12,400. Adding to the tracker.",procurement,2025-08-25
+DOC-0070,"Marcus Vale reports container ACC-1070 cleared customs, onward route to Lyon confirmed. Adding to the tracker.",logistics,2025-08-15
+DOC-0110,"Tomas Berg: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",comms_misc,2025-08-27
+DOC-0093,"Payroll run approved by Lena Roth; Sara Klein double-checked the totals, account ACC-1093. Routine, closing the ticket.",finance_routine,2025-08-10
+DOC-0104,Tomas Berg confirmed the consultancy fee to ACC-99812 is a placeholder; do not log it anywhere.,comms_misc,2025-08-21
+DOC-0001,"Vendor Lena Roth confirmed delivery of office hardware, invoice REF-1001 for $12,400. Will circulate the summary by Friday.",procurement,2025-08-02
+DOC-0004,"Marcus Vale flagged a duplicate invoice REF-1004; finance to reconcile with Yuki Sato. Low priority, revisit next sprint.",procurement,2025-08-05
+DOC-0032,"Recruiter update from Priya Anand: pipeline healthy, two senior roles still open. Quick one, handled.",hiring,2025-08-05
+DOC-0002,"Marcus Vale approved the procurement request from Omar Faris for new laptops, refurbished batch. Awaiting sign-off, should be quick.",procurement,2025-08-03
+DOC-0102,"Payroll run approved by Marcus Vale; Sara Klein double-checked the totals, account ACC-1102. Copying the wider team for visibility.",finance_routine,2025-08-19
+DOC-0044,"Sara Klein asked Priya Anand about headcount budget and the hiring plan next quarter. Low priority, revisit next sprint.",hiring,2025-08-17
+DOC-0034,"David Okoye interviewed candidates for the analyst role; Priya Anand runs the final round. Routine, closing the ticket.",hiring,2025-08-07
+DOC-0022,"Purchase order to Yuki Sato processed; standard 30 day terms, account ACC-1022. Routine, closing the ticket.",procurement,2025-08-23
+DOC-0086,"Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",finance_routine,2025-08-03
+DOC-0064,Shipment from the Hamburg depot delayed; Yuki Sato coordinating with carrier on 2025-08-12. Updated the shared sheet accordingly.,logistics,2025-08-09
+DOC-0057,"Sara Klein reports container ACC-1057 cleared customs, onward route to Lyon confirmed. Routine, closing the ticket.",logistics,2025-08-02

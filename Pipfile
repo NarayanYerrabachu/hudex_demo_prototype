@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+scikit-learn = "*"
+numpy = "*"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+python-multipart = "*"
+ripser = "*"
+tika = "*"
+pdfplumber = "*"
+pandas = "*"
+openpyxl = "*"
+pyyaml = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.13"

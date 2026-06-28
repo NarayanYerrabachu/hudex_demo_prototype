@@ -1,0 +1,5 @@
+services:
+  hudex:
+    build: .
+    ports:
+      - "8001:8001"

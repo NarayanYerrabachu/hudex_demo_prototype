@@ -1,0 +1,2106 @@
+{
+  "meta": {
+    "n_docs": 112,
+    "theme_quality": 0.187,
+    "n_themes": 8,
+    "n_anomalies": 9,
+    "n_relationships": 14
+  },
+  "documents": [
+    {
+      "id": "DOC-0014",
+      "text": "Sara Klein flagged a duplicate invoice REF-1014; finance to reconcile with Omar Faris. Standard process, all good.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-15"
+      },
+      "anomaly": 0.348,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0003",
+      "text": "Lena Roth flagged a duplicate invoice REF-1003; finance to reconcile with Omar Faris. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-04"
+      },
+      "anomaly": 0.239,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0082",
+      "text": "Payroll run approved by Omar Faris; Tomas Berg double-checked the totals, account ACC-1082. Quick one, handled.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-27"
+      },
+      "anomaly": 0.189,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0087",
+      "text": "Payroll run approved by Lena Roth; Yuki Sato double-checked the totals, account ACC-1087. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-04"
+      },
+      "anomaly": 0.171,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0107",
+      "text": "Keep this between us Marcus Vale \u2014 the Yuki Sato payment skips approval entirely, settle in cash, no paperwork.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-24"
+      },
+      "anomaly": 0.667,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0079",
+      "text": "Payroll run approved by Marcus Vale; Yuki Sato double-checked the totals, account ACC-1079. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-24"
+      },
+      "anomaly": 0.165,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0092",
+      "text": "Payroll run approved by Yuki Sato; Lena Roth double-checked the totals, account ACC-1092. Routine, closing the ticket.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-09"
+      },
+      "anomaly": 0.1,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0095",
+      "text": "Marcus Vale reviewed the expense report from Priya Anand; within policy, approved. Same as last month, nothing unusual.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-12"
+      },
+      "anomaly": 0.284,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0062",
+      "text": "Shipment from the Hamburg depot delayed; Yuki Sato coordinating with carrier on 2025-08-12. Adding to the tracker.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-07"
+      },
+      "anomaly": 0.323,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0037",
+      "text": "Reference check done for the Lena Roth candidate; background clean, start date agreed. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-10"
+      },
+      "anomaly": 0.436,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0074",
+      "text": "David Okoye reports container ACC-1074 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-19"
+      },
+      "anomaly": 0.184,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0094",
+      "text": "Monthly close completed by Sara Klein; all ledgers reconciled, no exceptions noted. Standard process, all good.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-11"
+      },
+      "anomaly": 0.538,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0042",
+      "text": "Marcus Vale asked Omar Faris about headcount budget and the hiring plan next quarter. Adding to the tracker.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-15"
+      },
+      "anomaly": 0.615,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0041",
+      "text": "David Okoye shared the interview scorecards with Tomas Berg; strong shortlist this cycle. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-14"
+      },
+      "anomaly": 0.25,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0085",
+      "text": "Omar Faris reviewed the expense report from David Okoye; within policy, approved. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-02"
+      },
+      "anomaly": 0.174,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0053",
+      "text": "Route optimisation review with Priya Anand and Tomas Berg; fuel costs up, margins tightening. Adding to the tracker.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-26"
+      },
+      "anomaly": 0.532,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0076",
+      "text": "David Okoye reports container ACC-1076 cleared customs, onward route to Lyon confirmed. Quick one, handled.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-21"
+      },
+      "anomaly": 0.151,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0081",
+      "text": "Sara Klein reviewed the expense report from Tomas Berg; within policy, approved. Adding to the tracker.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-26"
+      },
+      "anomaly": 0.191,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0067",
+      "text": "Omar Faris reports container ACC-1067 cleared customs, onward route to Lyon confirmed. Routine, closing the ticket.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-12"
+      },
+      "anomaly": 0.167,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0047",
+      "text": "Sara Klein interviewed candidates for the analyst role; Omar Faris runs the final round. Follow-up call booked for Thursday.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-20"
+      },
+      "anomaly": 0.361,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0071",
+      "text": "Route optimisation review with Priya Anand and Yuki Sato; fuel costs up, margins tightening. Same as last month, nothing unusual.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-16"
+      },
+      "anomaly": 0.642,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0099",
+      "text": "Tomas Berg reviewed the expense report from Priya Anand; within policy, approved. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-16"
+      },
+      "anomaly": 0.103,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0078",
+      "text": "Monthly close completed by Marcus Vale; all ledgers reconciled, no exceptions noted. Adding to the tracker.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-23"
+      },
+      "anomaly": 0.542,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0072",
+      "text": "Route optimisation review with Yuki Sato and Omar Faris; fuel costs up, margins tightening. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-17"
+      },
+      "anomaly": 0.27,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0059",
+      "text": "Omar Faris reports container ACC-1059 cleared customs, onward route to Lyon confirmed. Same as last month, nothing unusual.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-04"
+      },
+      "anomaly": 0.172,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0033",
+      "text": "David Okoye shared the interview scorecards with Omar Faris; strong shortlist this cycle. Looping in the regional lead.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-06"
+      },
+      "anomaly": 0.465,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0105",
+      "text": "Marcus Vale the off-book transfer to ACC-99812 must never appear in the ledger; settle quietly offshore.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-22"
+      },
+      "anomaly": 0.827,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0109",
+      "text": "Per Marcus Vale, the kickback to David Okoye gets coded as marketing; EUR 120,000, strictly off the books.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-26"
+      },
+      "anomaly": 0.914,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0026",
+      "text": "Reference check done for the Yuki Sato candidate; background clean, start date agreed. Quick one, handled.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-27"
+      },
+      "anomaly": 0.525,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0008",
+      "text": "Purchase order to David Okoye processed; standard 30 day terms, account ACC-1008. Adding to the tracker.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-09"
+      },
+      "anomaly": 0.122,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0045",
+      "text": "Omar Faris interviewed candidates for the analyst role; Priya Anand runs the final round. Quick one, handled.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-18"
+      },
+      "anomaly": 0.463,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0040",
+      "text": "Marcus Vale shared the interview scorecards with Omar Faris; strong shortlist this cycle. Noted in the weekly sync.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-13"
+      },
+      "anomaly": 0.274,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0046",
+      "text": "Reference check done for the Tomas Berg candidate; background clean, start date agreed. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-19"
+      },
+      "anomaly": 0.348,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0012",
+      "text": "Purchase order to Tomas Berg processed; standard 30 day terms, account ACC-1012. No action needed for now.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-13"
+      },
+      "anomaly": 0.203,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0097",
+      "text": "Monthly close completed by Lena Roth; all ledgers reconciled, no exceptions noted. Follow-up call booked for Thursday.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-14"
+      },
+      "anomaly": 0.582,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0054",
+      "text": "Yuki Sato reports container ACC-1054 cleared customs, onward route to Lyon confirmed. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-27"
+      },
+      "anomaly": 0.165,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0030",
+      "text": "Yuki Sato asked Lena Roth about headcount budget and the hiring plan next quarter. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-03"
+      },
+      "anomaly": 0.316,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0005",
+      "text": "Marcus Vale approved the procurement request from Tomas Berg for new laptops, refurbished batch. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-06"
+      },
+      "anomaly": 0.456,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0096",
+      "text": "Payroll run approved by Lena Roth; Marcus Vale double-checked the totals, account ACC-1096. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-13"
+      },
+      "anomaly": 0.141,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0049",
+      "text": "Offer extended to a new hire in the data team; onboarding planned with Sara Klein. Noted in the weekly sync.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-22"
+      },
+      "anomaly": 0.378,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0052",
+      "text": "Sara Klein reports container ACC-1052 cleared customs, onward route to Lyon confirmed. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-25"
+      },
+      "anomaly": 0.177,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0056",
+      "text": "Shipment from the Hamburg depot delayed; Tomas Berg coordinating with carrier on 2025-08-12. Follow-up call booked for Thursday.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-01"
+      },
+      "anomaly": 0.32,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0108",
+      "text": "Marcus Vale: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-25"
+      },
+      "anomaly": 0.992,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0091",
+      "text": "Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-08"
+      },
+      "anomaly": 0.6,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0019",
+      "text": "Omar Faris flagged a duplicate invoice REF-1019; finance to reconcile with Marcus Vale. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-20"
+      },
+      "anomaly": 0.186,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0058",
+      "text": "Route optimisation review with Lena Roth and Omar Faris; fuel costs up, margins tightening. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-03"
+      },
+      "anomaly": 0.443,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0061",
+      "text": "Sara Klein escalated a warehouse capacity issue affecting the EUR 80k order. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-06"
+      },
+      "anomaly": 0.535,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0068",
+      "text": "David Okoye reports container ACC-1068 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-13"
+      },
+      "anomaly": 0.184,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0035",
+      "text": "Sara Klein shared the interview scorecards with Lena Roth; strong shortlist this cycle. Will circulate the summary by Friday.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-08"
+      },
+      "anomaly": 0.397,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0021",
+      "text": "Vendor Tomas Berg confirmed delivery of office hardware, invoice REF-1021 for $12,400. Standard process, all good.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-22"
+      },
+      "anomaly": 0.417,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0023",
+      "text": "Vendor Omar Faris confirmed delivery of office hardware, invoice REF-1023 for $12,400. No action needed for now.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-24"
+      },
+      "anomaly": 0.592,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0073",
+      "text": "Shipment from the Hamburg depot delayed; Sara Klein coordinating with carrier on 2025-08-12. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-18"
+      },
+      "anomaly": 0.317,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0000",
+      "text": "Purchase order to David Okoye processed; standard 30 day terms, account ACC-1000. Will circulate the summary by Friday.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-01"
+      },
+      "anomaly": 0.24,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0028",
+      "text": "Tomas Berg shared the interview scorecards with Lena Roth; strong shortlist this cycle. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-01"
+      },
+      "anomaly": 0.326,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0077",
+      "text": "Shipment from the Hamburg depot delayed; Marcus Vale coordinating with carrier on 2025-08-12. Quick one, handled.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-22"
+      },
+      "anomaly": 0.34,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0066",
+      "text": "Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Standard process, all good.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-11"
+      },
+      "anomaly": 0.341,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0011",
+      "text": "Purchase order to Omar Faris processed; standard 30 day terms, account ACC-1011. Standard process, all good.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-12"
+      },
+      "anomaly": 0.228,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0080",
+      "text": "Marcus Vale reviewed the expense report from Yuki Sato; within policy, approved. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-25"
+      },
+      "anomaly": 0.16,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0100",
+      "text": "Sara Klein reviewed the expense report from Marcus Vale; within policy, approved. Follow-up call booked for Thursday.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-17"
+      },
+      "anomaly": 0.274,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0018",
+      "text": "Purchase order to Sara Klein processed; standard 30 day terms, account ACC-1018. Routine, closing the ticket.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-19"
+      },
+      "anomaly": 0.166,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0075",
+      "text": "David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Noted in the weekly sync.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-20"
+      },
+      "anomaly": 0.677,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0015",
+      "text": "Purchase order to Lena Roth processed; standard 30 day terms, account ACC-1015. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-16"
+      },
+      "anomaly": 0.173,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0038",
+      "text": "Priya Anand interviewed candidates for the analyst role; Marcus Vale runs the final round. Adding to the tracker.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-11"
+      },
+      "anomaly": 0.409,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0036",
+      "text": "Reference check done for the Yuki Sato candidate; background clean, start date agreed. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-09"
+      },
+      "anomaly": 0.412,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0089",
+      "text": "Priya Anand reviewed the expense report from Sara Klein; within policy, approved. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-06"
+      },
+      "anomaly": 0.232,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0048",
+      "text": "Reference check done for the David Okoye candidate; background clean, start date agreed. Noted in the weekly sync.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-21"
+      },
+      "anomaly": 0.467,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0010",
+      "text": "Vendor Priya Anand confirmed delivery of office hardware, invoice REF-1010 for $12,400. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-11"
+      },
+      "anomaly": 0.388,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0007",
+      "text": "Purchase order to Yuki Sato processed; standard 30 day terms, account ACC-1007. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-08"
+      },
+      "anomaly": 0.165,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0020",
+      "text": "Purchase order to Omar Faris processed; standard 30 day terms, account ACC-1020. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-21"
+      },
+      "anomaly": 0.104,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0088",
+      "text": "Payroll run approved by David Okoye; Omar Faris double-checked the totals, account ACC-1088. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-05"
+      },
+      "anomaly": 0.084,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0103",
+      "text": "Payroll run approved by Lena Roth; Tomas Berg double-checked the totals, account ACC-1103. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-20"
+      },
+      "anomaly": 0.157,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0009",
+      "text": "Purchase order to Lena Roth processed; standard 30 day terms, account ACC-1009. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-10"
+      },
+      "anomaly": 0.135,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0101",
+      "text": "Monthly close completed by David Okoye; all ledgers reconciled, no exceptions noted. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-18"
+      },
+      "anomaly": 0.466,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0016",
+      "text": "Sara Klein approved the procurement request from Lena Roth for new laptops, refurbished batch. Quick one, handled.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-17"
+      },
+      "anomaly": 0.601,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0006",
+      "text": "Vendor Priya Anand confirmed delivery of office hardware, invoice REF-1006 for $12,400. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-07"
+      },
+      "anomaly": 0.319,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0106",
+      "text": "Confidential Tomas Berg: launder the surplus via the Yuki Sato intermediary, cash only, no invoice trail.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-23"
+      },
+      "anomaly": 0.641,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0051",
+      "text": "Recruiter update from Tomas Berg: pipeline healthy, two senior roles still open. Routine, closing the ticket.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-24"
+      },
+      "anomaly": 0.776,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0017",
+      "text": "Marcus Vale flagged a duplicate invoice REF-1017; finance to reconcile with Sara Klein. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-18"
+      },
+      "anomaly": 0.256,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0025",
+      "text": "Purchase order to David Okoye processed; standard 30 day terms, account ACC-1025. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-26"
+      },
+      "anomaly": 0.15,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0043",
+      "text": "Yuki Sato shared the interview scorecards with Lena Roth; strong shortlist this cycle. Follow-up call booked for Thursday.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-16"
+      },
+      "anomaly": 0.339,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0029",
+      "text": "Tomas Berg shared the interview scorecards with Sara Klein; strong shortlist this cycle. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-02"
+      },
+      "anomaly": 0.353,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0027",
+      "text": "David Okoye interviewed candidates for the analyst role; Priya Anand runs the final round. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-28"
+      },
+      "anomaly": 0.416,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0039",
+      "text": "Reference check done for the David Okoye candidate; background clean, start date agreed. Same as last month, nothing unusual.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-12"
+      },
+      "anomaly": 0.646,
+      "theme": 6
+    },
+    {
+      "id": "DOC-0098",
+      "text": "Monthly close completed by David Okoye; all ledgers reconciled, no exceptions noted. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-15"
+      },
+      "anomaly": 0.348,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0050",
+      "text": "Tomas Berg shared the interview scorecards with Sara Klein; strong shortlist this cycle. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-23"
+      },
+      "anomaly": 0.252,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0069",
+      "text": "Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Adding to the tracker.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-14"
+      },
+      "anomaly": 0.393,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0063",
+      "text": "David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Same as last month, nothing unusual.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-08"
+      },
+      "anomaly": 0.902,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0090",
+      "text": "Omar Faris reviewed the expense report from Lena Roth; within policy, approved. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-07"
+      },
+      "anomaly": 0.22,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0055",
+      "text": "Omar Faris reports container ACC-1055 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-28"
+      },
+      "anomaly": 0.178,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0083",
+      "text": "Tomas Berg submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-28"
+      },
+      "anomaly": 0.697,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0084",
+      "text": "David Okoye reviewed the expense report from Priya Anand; within policy, approved. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-01"
+      },
+      "anomaly": 0.237,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0013",
+      "text": "Lena Roth approved the procurement request from Tomas Berg for new laptops, refurbished batch. Looping in the regional lead.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-14"
+      },
+      "anomaly": 0.729,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0111",
+      "text": "Per Marcus Vale, the kickback to Priya Anand gets coded as marketing; EUR 120,000, strictly off the books.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-28"
+      },
+      "anomaly": 0.826,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0031",
+      "text": "David Okoye interviewed candidates for the analyst role; Lena Roth runs the final round. Discussed briefly over lunch.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-04"
+      },
+      "anomaly": 0.384,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0060",
+      "text": "Omar Faris reports container ACC-1060 cleared customs, onward route to Lyon confirmed. Noted in the weekly sync.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-05"
+      },
+      "anomaly": 0.178,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0065",
+      "text": "Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Flagged to the ops channel earlier today.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-10"
+      },
+      "anomaly": 0.185,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0024",
+      "text": "Vendor Omar Faris confirmed delivery of office hardware, invoice REF-1024 for $12,400. Adding to the tracker.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-25"
+      },
+      "anomaly": 0.475,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0070",
+      "text": "Marcus Vale reports container ACC-1070 cleared customs, onward route to Lyon confirmed. Adding to the tracker.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-15"
+      },
+      "anomaly": 0.119,
+      "theme": 3
+    },
+    {
+      "id": "DOC-0110",
+      "text": "Tomas Berg: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-27"
+      },
+      "anomaly": 0.928,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0093",
+      "text": "Payroll run approved by Lena Roth; Sara Klein double-checked the totals, account ACC-1093. Routine, closing the ticket.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-10"
+      },
+      "anomaly": 0.127,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0104",
+      "text": "Tomas Berg confirmed the consultancy fee to ACC-99812 is a placeholder; do not log it anywhere.",
+      "meta": {
+        "channel": "comms_misc",
+        "date": "2025-08-21"
+      },
+      "anomaly": 0.706,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0001",
+      "text": "Vendor Lena Roth confirmed delivery of office hardware, invoice REF-1001 for $12,400. Will circulate the summary by Friday.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-02"
+      },
+      "anomaly": 0.556,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0004",
+      "text": "Marcus Vale flagged a duplicate invoice REF-1004; finance to reconcile with Yuki Sato. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-05"
+      },
+      "anomaly": 0.291,
+      "theme": 7
+    },
+    {
+      "id": "DOC-0032",
+      "text": "Recruiter update from Priya Anand: pipeline healthy, two senior roles still open. Quick one, handled.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-05"
+      },
+      "anomaly": 0.828,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0002",
+      "text": "Marcus Vale approved the procurement request from Omar Faris for new laptops, refurbished batch. Awaiting sign-off, should be quick.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-03"
+      },
+      "anomaly": 0.49,
+      "theme": 4
+    },
+    {
+      "id": "DOC-0102",
+      "text": "Payroll run approved by Marcus Vale; Sara Klein double-checked the totals, account ACC-1102. Copying the wider team for visibility.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-19"
+      },
+      "anomaly": 0.127,
+      "theme": 5
+    },
+    {
+      "id": "DOC-0044",
+      "text": "Sara Klein asked Priya Anand about headcount budget and the hiring plan next quarter. Low priority, revisit next sprint.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-17"
+      },
+      "anomaly": 0.515,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0034",
+      "text": "David Okoye interviewed candidates for the analyst role; Priya Anand runs the final round. Routine, closing the ticket.",
+      "meta": {
+        "channel": "hiring",
+        "date": "2025-08-07"
+      },
+      "anomaly": 0.557,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0022",
+      "text": "Purchase order to Yuki Sato processed; standard 30 day terms, account ACC-1022. Routine, closing the ticket.",
+      "meta": {
+        "channel": "procurement",
+        "date": "2025-08-23"
+      },
+      "anomaly": 0.207,
+      "theme": 1
+    },
+    {
+      "id": "DOC-0086",
+      "text": "Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",
+      "meta": {
+        "channel": "finance_routine",
+        "date": "2025-08-03"
+      },
+      "anomaly": 0.743,
+      "theme": 2
+    },
+    {
+      "id": "DOC-0064",
+      "text": "Shipment from the Hamburg depot delayed; Yuki Sato coordinating with carrier on 2025-08-12. Updated the shared sheet accordingly.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-09"
+      },
+      "anomaly": 0.352,
+      "theme": 0
+    },
+    {
+      "id": "DOC-0057",
+      "text": "Sara Klein reports container ACC-1057 cleared customs, onward route to Lyon confirmed. Routine, closing the ticket.",
+      "meta": {
+        "channel": "logistics",
+        "date": "2025-08-02"
+      },
+      "anomaly": 0.178,
+      "theme": 3
+    }
+  ],
+  "themes": [
+    {
+      "kind": "theme",
+      "title": "Theme: coordinating, depot, hamburg",
+      "detail": "8 documents share this pattern. Key terms: coordinating, depot, hamburg, hamburg depot, shipment hamburg, depot delayed",
+      "score": 8.0,
+      "sources": [
+        "DOC-0062",
+        "DOC-0056",
+        "DOC-0073",
+        "DOC-0077",
+        "DOC-0066",
+        "DOC-0069",
+        "DOC-0065",
+        "DOC-0064"
+      ],
+      "extra": {
+        "terms": [
+          "coordinating",
+          "depot",
+          "hamburg",
+          "hamburg depot",
+          "shipment hamburg",
+          "depot delayed"
+        ],
+        "size": 8
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: terms, purchase order, day terms",
+      "detail": "11 documents share this pattern. Key terms: terms, purchase order, day terms, standard 30, processed, processed standard",
+      "score": 11.0,
+      "sources": [
+        "DOC-0008",
+        "DOC-0012",
+        "DOC-0000",
+        "DOC-0011",
+        "DOC-0018",
+        "DOC-0015",
+        "DOC-0007",
+        "DOC-0020",
+        "DOC-0009",
+        "DOC-0025",
+        "DOC-0022"
+      ],
+      "extra": {
+        "terms": [
+          "terms",
+          "purchase order",
+          "day terms",
+          "standard 30",
+          "processed",
+          "processed standard"
+        ],
+        "size": 11
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: anand, priya, priya anand",
+      "detail": "36 documents share this pattern. Key terms: anand, priya, priya anand, expense report, policy, policy approved",
+      "score": 36.0,
+      "sources": [
+        "DOC-0107",
+        "DOC-0095",
+        "DOC-0042",
+        "DOC-0085",
+        "DOC-0053",
+        "DOC-0081",
+        "DOC-0047",
+        "DOC-0071",
+        "DOC-0099",
+        "DOC-0072",
+        "DOC-0105",
+        "DOC-0109",
+        "DOC-0045",
+        "DOC-0030",
+        "DOC-0091",
+        "DOC-0058",
+        "DOC-0061",
+        "DOC-0080",
+        "DOC-0100",
+        "DOC-0075",
+        "DOC-0038",
+        "DOC-0089",
+        "DOC-0106",
+        "DOC-0051",
+        "DOC-0027",
+        "DOC-0063",
+        "DOC-0090",
+        "DOC-0083",
+        "DOC-0084",
+        "DOC-0111",
+        "DOC-0031",
+        "DOC-0104",
+        "DOC-0032",
+        "DOC-0044",
+        "DOC-0034",
+        "DOC-0086"
+      ],
+      "extra": {
+        "terms": [
+          "anand",
+          "priya",
+          "priya anand",
+          "expense report",
+          "policy",
+          "policy approved"
+        ],
+        "size": 36
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: reports, customs, route lyon",
+      "detail": "11 documents share this pattern. Key terms: reports, customs, route lyon, customs onward, container, onward route",
+      "score": 11.0,
+      "sources": [
+        "DOC-0074",
+        "DOC-0076",
+        "DOC-0067",
+        "DOC-0059",
+        "DOC-0054",
+        "DOC-0052",
+        "DOC-0068",
+        "DOC-0055",
+        "DOC-0060",
+        "DOC-0070",
+        "DOC-0057"
+      ],
+      "extra": {
+        "terms": [
+          "reports",
+          "customs",
+          "route lyon",
+          "customs onward",
+          "container",
+          "onward route"
+        ],
+        "size": 11
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: interview, cycle, interview scorecards",
+      "detail": "13 documents share this pattern. Key terms: interview, cycle, interview scorecards, strong shortlist, strong, shortlist cycle",
+      "score": 13.0,
+      "sources": [
+        "DOC-0041",
+        "DOC-0033",
+        "DOC-0040",
+        "DOC-0005",
+        "DOC-0049",
+        "DOC-0035",
+        "DOC-0028",
+        "DOC-0016",
+        "DOC-0043",
+        "DOC-0029",
+        "DOC-0050",
+        "DOC-0013",
+        "DOC-0002"
+      ],
+      "extra": {
+        "terms": [
+          "interview",
+          "cycle",
+          "interview scorecards",
+          "strong shortlist",
+          "strong",
+          "shortlist cycle"
+        ],
+        "size": 13
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: payroll run, run, double",
+      "detail": "9 documents share this pattern. Key terms: payroll run, run, double, totals, checked totals, checked",
+      "score": 9.0,
+      "sources": [
+        "DOC-0082",
+        "DOC-0087",
+        "DOC-0079",
+        "DOC-0092",
+        "DOC-0096",
+        "DOC-0088",
+        "DOC-0103",
+        "DOC-0093",
+        "DOC-0102"
+      ],
+      "extra": {
+        "terms": [
+          "payroll run",
+          "run",
+          "double",
+          "totals",
+          "checked totals",
+          "checked"
+        ],
+        "size": 9
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: clean, background, candidate background",
+      "detail": "6 documents share this pattern. Key terms: clean, background, candidate background, candidate, check, clean start",
+      "score": 6.0,
+      "sources": [
+        "DOC-0037",
+        "DOC-0026",
+        "DOC-0046",
+        "DOC-0036",
+        "DOC-0048",
+        "DOC-0039"
+      ],
+      "extra": {
+        "terms": [
+          "clean",
+          "background",
+          "candidate background",
+          "candidate",
+          "check",
+          "clean start"
+        ],
+        "size": 6
+      }
+    },
+    {
+      "kind": "theme",
+      "title": "Theme: ref, invoice ref, invoice",
+      "detail": "18 documents share this pattern. Key terms: ref, invoice ref, invoice, hardware invoice, confirmed delivery, 12 400",
+      "score": 18.0,
+      "sources": [
+        "DOC-0014",
+        "DOC-0003",
+        "DOC-0094",
+        "DOC-0078",
+        "DOC-0097",
+        "DOC-0108",
+        "DOC-0019",
+        "DOC-0021",
+        "DOC-0023",
+        "DOC-0010",
+        "DOC-0101",
+        "DOC-0006",
+        "DOC-0017",
+        "DOC-0098",
+        "DOC-0024",
+        "DOC-0110",
+        "DOC-0001",
+        "DOC-0004"
+      ],
+      "extra": {
+        "terms": [
+          "ref",
+          "invoice ref",
+          "invoice",
+          "hardware invoice",
+          "confirmed delivery",
+          "12 400"
+        ],
+        "size": 18
+      }
+    }
+  ],
+  "anomalies": [
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0108",
+      "detail": "Marcus Vale: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "score": 0.9918901939558205,
+      "sources": [
+        "DOC-0108"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-25"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0110",
+      "detail": "Tomas Berg: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "score": 0.9276549297836882,
+      "sources": [
+        "DOC-0110"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-27"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0109",
+      "detail": "Per Marcus Vale, the kickback to David Okoye gets coded as marketing; EUR 120,000, strictly off the books.",
+      "score": 0.9140101791042141,
+      "sources": [
+        "DOC-0109"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-26"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0063",
+      "detail": "David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Same as last month, nothing unusual.",
+      "score": 0.9020924568173783,
+      "sources": [
+        "DOC-0063"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-08"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0032",
+      "detail": "Recruiter update from Priya Anand: pipeline healthy, two senior roles still open. Quick one, handled.",
+      "score": 0.8279204690413398,
+      "sources": [
+        "DOC-0032"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "hiring",
+          "date": "2025-08-05"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0105",
+      "detail": "Marcus Vale the off-book transfer to ACC-99812 must never appear in the ledger; settle quietly offshore.",
+      "score": 0.827124449201944,
+      "sources": [
+        "DOC-0105"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-22"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0111",
+      "detail": "Per Marcus Vale, the kickback to Priya Anand gets coded as marketing; EUR 120,000, strictly off the books.",
+      "score": 0.8259493949321213,
+      "sources": [
+        "DOC-0111"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-28"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0051",
+      "detail": "Recruiter update from Tomas Berg: pipeline healthy, two senior roles still open. Routine, closing the ticket.",
+      "score": 0.7761009232929286,
+      "sources": [
+        "DOC-0051"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "hiring",
+          "date": "2025-08-24"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0086",
+      "detail": "Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",
+      "score": 0.7430140717194689,
+      "sources": [
+        "DOC-0086"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "finance_routine",
+          "date": "2025-08-03"
+        }
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "kind": "relationship",
+      "title": "Omar Faris \u2194 Marcus Vale",
+      "detail": "Co-occur in 4 documents.",
+      "score": 4.0,
+      "sources": [
+        "DOC-0002",
+        "DOC-0019",
+        "DOC-0040",
+        "DOC-0042"
+      ],
+      "extra": {
+        "a": "Omar Faris",
+        "b": "Marcus Vale",
+        "weight": 4
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Lena Roth \u2194 Yuki Sato",
+      "detail": "Co-occur in 4 documents.",
+      "score": 4.0,
+      "sources": [
+        "DOC-0030",
+        "DOC-0043",
+        "DOC-0087",
+        "DOC-0092"
+      ],
+      "extra": {
+        "a": "Lena Roth",
+        "b": "Yuki Sato",
+        "weight": 4
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Yuki Sato \u2194 Marcus Vale",
+      "detail": "Co-occur in 4 documents.",
+      "score": 4.0,
+      "sources": [
+        "DOC-0004",
+        "DOC-0079",
+        "DOC-0080",
+        "DOC-0107"
+      ],
+      "extra": {
+        "a": "Yuki Sato",
+        "b": "Marcus Vale",
+        "weight": 4
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Sara Klein \u2194 Lena Roth",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0016",
+        "DOC-0035",
+        "DOC-0093"
+      ],
+      "extra": {
+        "a": "Sara Klein",
+        "b": "Lena Roth",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Sara Klein \u2194 Tomas Berg",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0029",
+        "DOC-0050",
+        "DOC-0081"
+      ],
+      "extra": {
+        "a": "Sara Klein",
+        "b": "Tomas Berg",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Sara Klein \u2194 Marcus Vale",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0017",
+        "DOC-0100",
+        "DOC-0102"
+      ],
+      "extra": {
+        "a": "Sara Klein",
+        "b": "Marcus Vale",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Omar Faris \u2194 Lena Roth",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0003",
+        "DOC-0058",
+        "DOC-0090"
+      ],
+      "extra": {
+        "a": "Omar Faris",
+        "b": "Lena Roth",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Omar Faris \u2194 David Okoye",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0033",
+        "DOC-0085",
+        "DOC-0088"
+      ],
+      "extra": {
+        "a": "Omar Faris",
+        "b": "David Okoye",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Lena Roth \u2194 Tomas Berg",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0013",
+        "DOC-0028",
+        "DOC-0103"
+      ],
+      "extra": {
+        "a": "Lena Roth",
+        "b": "Tomas Berg",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Priya Anand \u2194 David Okoye",
+      "detail": "Co-occur in 3 documents.",
+      "score": 3.0,
+      "sources": [
+        "DOC-0027",
+        "DOC-0034",
+        "DOC-0084"
+      ],
+      "extra": {
+        "a": "Priya Anand",
+        "b": "David Okoye",
+        "weight": 3
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Sara Klein \u2194 Omar Faris",
+      "detail": "Co-occur in 2 documents.",
+      "score": 2.0,
+      "sources": [
+        "DOC-0014",
+        "DOC-0047"
+      ],
+      "extra": {
+        "a": "Sara Klein",
+        "b": "Omar Faris",
+        "weight": 2
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Sara Klein \u2194 Priya Anand",
+      "detail": "Co-occur in 2 documents.",
+      "score": 2.0,
+      "sources": [
+        "DOC-0044",
+        "DOC-0089"
+      ],
+      "extra": {
+        "a": "Sara Klein",
+        "b": "Priya Anand",
+        "weight": 2
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Tomas Berg \u2194 Priya Anand",
+      "detail": "Co-occur in 2 documents.",
+      "score": 2.0,
+      "sources": [
+        "DOC-0053",
+        "DOC-0099"
+      ],
+      "extra": {
+        "a": "Tomas Berg",
+        "b": "Priya Anand",
+        "weight": 2
+      }
+    },
+    {
+      "kind": "relationship",
+      "title": "Marcus Vale \u2194 Priya Anand",
+      "detail": "Co-occur in 2 documents.",
+      "score": 2.0,
+      "sources": [
+        "DOC-0038",
+        "DOC-0095"
+      ],
+      "extra": {
+        "a": "Marcus Vale",
+        "b": "Priya Anand",
+        "weight": 2
+      }
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "Omar Faris",
+        "docs": 12,
+        "exposure": 0
+      },
+      {
+        "id": "Marcus Vale",
+        "docs": 13,
+        "exposure": 0
+      },
+      {
+        "id": "Lena Roth",
+        "docs": 13,
+        "exposure": 0
+      },
+      {
+        "id": "Yuki Sato",
+        "docs": 8,
+        "exposure": 0
+      },
+      {
+        "id": "Sara Klein",
+        "docs": 13,
+        "exposure": 0
+      },
+      {
+        "id": "Tomas Berg",
+        "docs": 8,
+        "exposure": 0
+      },
+      {
+        "id": "David Okoye",
+        "docs": 6,
+        "exposure": 0
+      },
+      {
+        "id": "Priya Anand",
+        "docs": 9,
+        "exposure": 0
+      }
+    ],
+    "edges": [
+      {
+        "a": "Omar Faris",
+        "b": "Marcus Vale",
+        "w": 4,
+        "sources": [
+          "DOC-0002",
+          "DOC-0019",
+          "DOC-0040",
+          "DOC-0042"
+        ]
+      },
+      {
+        "a": "Lena Roth",
+        "b": "Yuki Sato",
+        "w": 4,
+        "sources": [
+          "DOC-0030",
+          "DOC-0043",
+          "DOC-0087",
+          "DOC-0092"
+        ]
+      },
+      {
+        "a": "Yuki Sato",
+        "b": "Marcus Vale",
+        "w": 4,
+        "sources": [
+          "DOC-0004",
+          "DOC-0079",
+          "DOC-0080",
+          "DOC-0107"
+        ]
+      },
+      {
+        "a": "Sara Klein",
+        "b": "Lena Roth",
+        "w": 3,
+        "sources": [
+          "DOC-0016",
+          "DOC-0035",
+          "DOC-0093"
+        ]
+      },
+      {
+        "a": "Sara Klein",
+        "b": "Tomas Berg",
+        "w": 3,
+        "sources": [
+          "DOC-0029",
+          "DOC-0050",
+          "DOC-0081"
+        ]
+      },
+      {
+        "a": "Sara Klein",
+        "b": "Marcus Vale",
+        "w": 3,
+        "sources": [
+          "DOC-0017",
+          "DOC-0100",
+          "DOC-0102"
+        ]
+      },
+      {
+        "a": "Omar Faris",
+        "b": "Lena Roth",
+        "w": 3,
+        "sources": [
+          "DOC-0003",
+          "DOC-0058",
+          "DOC-0090"
+        ]
+      },
+      {
+        "a": "Omar Faris",
+        "b": "David Okoye",
+        "w": 3,
+        "sources": [
+          "DOC-0033",
+          "DOC-0085",
+          "DOC-0088"
+        ]
+      },
+      {
+        "a": "Lena Roth",
+        "b": "Tomas Berg",
+        "w": 3,
+        "sources": [
+          "DOC-0013",
+          "DOC-0028",
+          "DOC-0103"
+        ]
+      },
+      {
+        "a": "Priya Anand",
+        "b": "David Okoye",
+        "w": 3,
+        "sources": [
+          "DOC-0027",
+          "DOC-0034",
+          "DOC-0084"
+        ]
+      },
+      {
+        "a": "Sara Klein",
+        "b": "Omar Faris",
+        "w": 2,
+        "sources": [
+          "DOC-0014",
+          "DOC-0047"
+        ]
+      },
+      {
+        "a": "Sara Klein",
+        "b": "Priya Anand",
+        "w": 2,
+        "sources": [
+          "DOC-0044",
+          "DOC-0089"
+        ]
+      },
+      {
+        "a": "Tomas Berg",
+        "b": "Priya Anand",
+        "w": 2,
+        "sources": [
+          "DOC-0053",
+          "DOC-0099"
+        ]
+      },
+      {
+        "a": "Marcus Vale",
+        "b": "Priya Anand",
+        "w": 2,
+        "sources": [
+          "DOC-0038",
+          "DOC-0095"
+        ]
+      }
+    ]
+  },
+  "queries": {
+    "off the books cash payment": [
+      {
+        "doc_id": "DOC-0106",
+        "score": 0.3789,
+        "snippet": "Confidential Tomas Berg: launder the surplus via the Yuki Sato intermediary, cash only, no invoice trail.",
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-23"
+        },
+        "theme": 2,
+        "anomaly_score": 0.6408
+      },
+      {
+        "doc_id": "DOC-0107",
+        "score": 0.3179,
+        "snippet": "Keep this between us Marcus Vale \u2014 the Yuki Sato payment skips approval entirely, settle in cash, no paperwork.",
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-24"
+        },
+        "theme": 2,
+        "anomaly_score": 0.6667
+      },
+      {
+        "doc_id": "DOC-0109",
+        "score": 0.1648,
+        "snippet": "Per Marcus Vale, the kickback to David Okoye gets coded as marketing; EUR 120,000, strictly off the books.",
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-26"
+        },
+        "theme": 2,
+        "anomaly_score": 0.914
+      },
+      {
+        "doc_id": "DOC-0111",
+        "score": 0.1633,
+        "snippet": "Per Marcus Vale, the kickback to Priya Anand gets coded as marketing; EUR 120,000, strictly off the books.",
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-28"
+        },
+        "theme": 2,
+        "anomaly_score": 0.8259
+      }
+    ],
+    "shipment delay customs": [
+      {
+        "doc_id": "DOC-0077",
+        "score": 0.1637,
+        "snippet": "Shipment from the Hamburg depot delayed; Marcus Vale coordinating with carrier on 2025-08-12. Quick one, handled.",
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-22"
+        },
+        "theme": 0,
+        "anomaly_score": 0.3403
+      },
+      {
+        "doc_id": "DOC-0073",
+        "score": 0.1542,
+        "snippet": "Shipment from the Hamburg depot delayed; Sara Klein coordinating with carrier on 2025-08-12. Awaiting sign-off, should be quick.",
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-18"
+        },
+        "theme": 0,
+        "anomaly_score": 0.3172
+      },
+      {
+        "doc_id": "DOC-0070",
+        "score": 0.1523,
+        "snippet": "Marcus Vale reports container ACC-1070 cleared customs, onward route to Lyon confirmed. Adding to the tracker.",
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-15"
+        },
+        "theme": 3,
+        "anomaly_score": 0.1187
+      },
+      {
+        "doc_id": "DOC-0056",
+        "score": 0.1513,
+        "snippet": "Shipment from the Hamburg depot delayed; Tomas Berg coordinating with carrier on 2025-08-12. Follow-up call booked for Thursday.",
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-01"
+        },
+        "theme": 0,
+        "anomaly_score": 0.3199
+      },
+      {
+        "doc_id": "DOC-0069",
+        "score": 0.1491,
+        "snippet": "Shipment from the Hamburg depot delayed; David Okoye coordinating with carrier on 2025-08-12. Adding to the tracker.",
+        "meta": {
+          "channel": "logistics",
+          "date": "2025-08-14"
+        },
+        "theme": 0,
+        "anomaly_score": 0.3927
+      }
+    ],
+    "new hire onboarding": [
+      {
+        "doc_id": "DOC-0049",
+        "score": 0.3814,
+        "snippet": "Offer extended to a new hire in the data team; onboarding planned with Sara Klein. Noted in the weekly sync.",
+        "meta": {
+          "channel": "hiring",
+          "date": "2025-08-22"
+        },
+        "theme": 4,
+        "anomaly_score": 0.3781
+      },
+      {
+        "doc_id": "DOC-0016",
+        "score": 0.239,
+        "snippet": "Sara Klein approved the procurement request from Lena Roth for new laptops, refurbished batch. Quick one, handled.",
+        "meta": {
+          "channel": "procurement",
+          "date": "2025-08-17"
+        },
+        "theme": 4,
+        "anomaly_score": 0.6006
+      },
+      {
+        "doc_id": "DOC-0002",
+        "score": 0.2201,
+        "snippet": "Marcus Vale approved the procurement request from Omar Faris for new laptops, refurbished batch. Awaiting sign-off, should be quick.",
+        "meta": {
+          "channel": "procurement",
+          "date": "2025-08-03"
+        },
+        "theme": 4,
+        "anomaly_score": 0.4896
+      },
+      {
+        "doc_id": "DOC-0013",
+        "score": 0.2006,
+        "snippet": "Lena Roth approved the procurement request from Tomas Berg for new laptops, refurbished batch. Looping in the regional lead.",
+        "meta": {
+          "channel": "procurement",
+          "date": "2025-08-14"
+        },
+        "theme": 4,
+        "anomaly_score": 0.7285
+      },
+      {
+        "doc_id": "DOC-0005",
+        "score": 0.1986,
+        "snippet": "Marcus Vale approved the procurement request from Tomas Berg for new laptops, refurbished batch. Updated the shared sheet accordingly.",
+        "meta": {
+          "channel": "procurement",
+          "date": "2025-08-06"
+        },
+        "theme": 4,
+        "anomaly_score": 0.4564
+      }
+    ]
+  }
+}
