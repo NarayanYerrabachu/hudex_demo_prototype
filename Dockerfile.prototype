@@ -8,10 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openjdk-21-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
-# Set JAVA_HOME — detect arch so the image builds on both amd64 and arm64
-RUN ARCH=$(dpkg --print-architecture) && \
-    echo "JAVA_HOME=/usr/lib/jvm/java-21-openjdk-${ARCH}" >> /etc/environment
-ENV PATH="/usr/lib/jvm/java-21-openjdk-arm64/bin:/usr/lib/jvm/java-21-openjdk-amd64/bin:${PATH}"
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 RUN pip install --no-cache-dir pipenv
 
@@ -21,10 +19,10 @@ RUN pipenv install --system --skip-lock
 # Pre-download the Tika JAR so first-request latency is zero
 RUN python -c "import tika; tika.initVM()" 2>/dev/null || true
 
-COPY patternengine/ ./patternengine/
+COPY patternengine_prototype/patternengine/ ./patternengine/
 COPY hudex_demo.html ./
 
 WORKDIR /app/patternengine
 
-EXPOSE 8001
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8001"]
+EXPOSE 8003
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8003"]

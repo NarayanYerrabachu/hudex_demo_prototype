@@ -1,5 +1,14 @@
 services:
-  hudex:
-    build: .
+  hudex-demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8001:8001"
+
+  hudex-prototype:
+    build:
+      context: .
+      dockerfile: Dockerfile.prototype
+    ports:
+      - "8003:8003"
