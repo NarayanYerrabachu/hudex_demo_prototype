@@ -4,10 +4,10 @@ set -e
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$REPO_DIR"
 
-# Install deps if needed (prototype only needs scikit-learn numpy)
-if ! python3 -c "import sklearn, numpy" 2>/dev/null; then
-    echo "→ Installing prototype dependencies..."
-    pip install --quiet scikit-learn numpy
+# Install deps if Pipfile.lock is missing
+if [ ! -f Pipfile.lock ]; then
+    echo "→ Generating Pipfile.lock..."
+    pipenv install
 fi
 
 # Extract prototype zip if not already done
@@ -16,11 +16,6 @@ if [ ! -d patternengine_prototype ]; then
     unzip -q pattern_engine_prototype.zip -d patternengine_prototype
 fi
 
-echo "→ Running engine — regenerating findings.json..."
+echo "→ Starting hudex-prototype on http://localhost:8003"
 cd patternengine_prototype/patternengine
-python3 export.py
-
-echo "→ Serving prototype UI on http://localhost:8003"
-echo "   Open http://localhost:8003/hudex_demo.html"
-cd "$REPO_DIR"
-exec python3 -m http.server 8003
+exec pipenv run uvicorn server:app --host 0.0.0.0 --port 8003 --reload

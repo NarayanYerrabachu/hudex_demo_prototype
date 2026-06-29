@@ -1,9 +1,292 @@
-{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HuDex-style Pattern Intelligence — Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13151A; --panel:#1A1D24; --panel2:#20242D; --line:#2A2F3A;
+    --text:#D9DCE3; --mute:#878E9C; --faint:#59616E;
+    --paper:#ECE7DA; --paper-ink:#23211C; --paper-mute:#6E6655;
+    --signal:#E0A33E;      /* anomaly / flag */
+    --signal-deep:#B5651d; /* trail line */
+    --danger:#E05252;      /* suspicious / confirmed threat */
+    --danger-deep:#8B1A1A;
+    --relate:#5E9CA6;      /* relationships / graph */
+    --theme:#A9B4C4;       /* themes */
+    --tda:#9B7FD4;         /* topology */
+    --ok:#6Fae8f;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--ink); color:var(--text);
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    font-size:15px; line-height:1.45; -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace}
+  button{font-family:inherit; color:inherit; cursor:pointer}
+  ::selection{background:var(--signal); color:#1a1206}
+
+  /* ---- shell ---- */
+  .app{display:flex; flex-direction:column; height:100vh; min-height:0}
+  header{
+    display:flex; align-items:center; gap:18px; padding:14px 20px;
+    border-bottom:1px solid var(--line); background:linear-gradient(180deg,#1B1E26,#171A21);
+    flex-wrap:wrap;
+  }
+  .brand{display:flex; align-items:baseline; gap:10px; white-space:nowrap}
+  .brand .mark{
+    font-weight:700; font-size:18px; letter-spacing:.04em;
+  }
+  .brand .mark b{color:var(--signal)}
+  .brand .tag{font-size:11px; color:var(--mute); letter-spacing:.14em; text-transform:uppercase}
+
+  .search{flex:1; min-width:220px; position:relative; display:flex; align-items:center}
+  .search input{
+    width:100%; background:var(--panel2); border:1px solid var(--line); color:var(--text);
+    border-radius:2px; padding:9px 12px 9px 34px; font-family:'IBM Plex Mono',monospace;
+    font-size:13px; letter-spacing:.01em;
+  }
+  .search input:focus{outline:2px solid var(--signal); outline-offset:-1px; border-color:transparent}
+  .search .ico{position:absolute; left:11px; color:var(--mute); font-size:13px}
+  .search .hint{position:absolute; right:10px; font-size:10px; color:var(--faint); letter-spacing:.1em}
+
+  .stats{display:flex; gap:20px; white-space:nowrap}
+  .stat .n{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:15px}
+  .stat .l{font-size:10px; color:var(--mute); letter-spacing:.12em; text-transform:uppercase}
+  .stat.clean .n{color:var(--ok)}
+
+  /* ---- body ---- */
+  .work{flex:1; display:grid; grid-template-columns:172px minmax(280px,1fr) minmax(300px,1.15fr);
+        min-height:0; position:relative}
+  @media(max-width:880px){ .work{grid-template-columns:1fr} .rail{display:none} }
+
+  .rail{border-right:1px solid var(--line); padding:16px 10px; display:flex; flex-direction:column; gap:4px}
+  .rail .lbl{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint);
+             padding:4px 10px 8px}
+  .lens{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    padding:9px 11px; border:1px solid transparent; border-radius:3px; background:none;
+    width:100%; text-align:left; color:var(--mute); font-size:13.5px;
+  }
+  .lens:hover{background:var(--panel)}
+  .lens .dot{width:7px;height:7px;border-radius:50%;flex:none;margin-right:7px}
+  .lens .nm{display:flex;align-items:center; flex:1}
+  .lens .ct{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--faint)}
+  .lens[aria-selected="true"]{background:var(--panel2); color:var(--text); border-color:var(--line)}
+  .lens.anom .dot{background:var(--signal)}
+  .lens.susp .dot{background:var(--danger)}
+  .lens.rel  .dot{background:var(--relate)}
+  .lens.theme .dot{background:var(--theme)}
+  .lens.topo .dot{background:var(--tda)}
+  .lens.query .dot{background:#fff}
+
+  .col{min-height:0; overflow:auto; padding:14px}
+  .col::-webkit-scrollbar{width:9px} .col::-webkit-scrollbar-thumb{background:var(--line); border-radius:9px}
+  .col-head{display:flex; align-items:baseline; justify-content:space-between; margin:2px 4px 12px}
+  .col-head h2{margin:0; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--text); font-weight:600}
+  .col-head .sub{font-size:11px; color:var(--mute)}
+
+  .center{border-right:1px solid var(--line)}
+
+  /* finding cards */
+  .find{
+    border:1px solid var(--line); border-left:2px solid var(--line); border-radius:3px;
+    padding:11px 13px; margin-bottom:9px; background:var(--panel); cursor:pointer;
+    transition:border-color .12s, background .12s;
+  }
+  .find:hover{background:var(--panel2)}
+  .find[aria-selected="true"]{background:var(--panel2)}
+  .find.k-anomaly[aria-selected="true"]{border-left-color:var(--signal)}
+  .find.k-suspicious[aria-selected="true"]{border-left-color:var(--danger)}
+  .find.k-suspicious .title{color:var(--danger)}
+  .find.k-relationship[aria-selected="true"]{border-left-color:var(--relate)}
+  .find.k-theme[aria-selected="true"]{border-left-color:var(--theme)}
+  .find.k-topology[aria-selected="true"]{border-left-color:var(--tda)}
+  .find.k-topology .title{color:var(--tda)}
+  .find.k-query[aria-selected="true"]{border-left-color:#fff}
+
+  /* topology detail panel */
+  .topo-panel{padding:12px 14px; border:1px solid var(--line); border-radius:3px;
+              background:var(--panel); margin-bottom:12px}
+  .topo-panel .topo-head{font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+                          color:var(--tda); font-weight:600; margin-bottom:10px}
+  .topo-row{display:flex; gap:24px; flex-wrap:wrap; margin-bottom:10px}
+  .topo-stat{display:flex; flex-direction:column; gap:2px}
+  .topo-stat .tv{font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:600; color:var(--tda)}
+  .topo-stat .tl{font-size:10px; color:var(--mute); letter-spacing:.1em; text-transform:uppercase}
+  .topo-bar-lbl{font-size:10px; color:var(--faint); font-family:'IBM Plex Mono',monospace; margin-bottom:4px}
+  .topo-bar{height:5px; background:var(--line); border-radius:3px; overflow:hidden; margin-bottom:6px}
+  .topo-bar i{display:block; height:100%; background:var(--tda); border-radius:3px}
+  .h1-list{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint); margin-top:4px}
+  .h1-list .h1-row{display:flex; gap:12px; align-items:center; padding:2px 0;
+                    border-bottom:1px solid rgba(42,47,58,.6)}
+  .h1-list .h1-row .ph{color:var(--tda); font-weight:600; min-width:50px}
+  .h1-list .h1-row .span{color:var(--mute); font-size:9.5px}
+  .find .ft{display:flex; align-items:center; gap:8px; justify-content:space-between}
+  .find .title{font-weight:500; font-size:14px}
+  .find .meta{font-size:11.5px; color:var(--mute); margin-top:5px; font-family:'IBM Plex Mono',monospace}
+  .find .detail{font-size:12.5px; color:var(--mute); margin-top:6px; line-height:1.4}
+  .find .why{margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint);
+             display:flex; flex-wrap:wrap; gap:5px; align-items:center}
+  .find .why span{color:var(--signal); border:1px solid rgba(224,163,62,.35);
+                  border-radius:2px; padding:0 5px; background:rgba(224,163,62,.07)}
+  .find .keywords{margin-top:6px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint);
+                  display:flex; flex-wrap:wrap; gap:5px; align-items:center}
+  .find .keywords span{color:var(--danger); border:1px solid rgba(224,82,82,.35);
+                       border-radius:2px; padding:0 5px; background:rgba(224,82,82,.07)}
+
+  .sev{display:flex; align-items:center; gap:7px; flex:none}
+  .sev .bar{width:46px; height:4px; background:var(--line); border-radius:3px; overflow:hidden}
+  .sev .bar i{display:block; height:100%; background:var(--signal)}
+  .sev .v{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--signal)}
+  .chip{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--faint);
+        border:1px solid var(--line); border-radius:2px; padding:1px 6px}
+
+  /* right-panel tabs */
+  .rtabs{display:flex; border-bottom:1px solid var(--line); margin-bottom:12px; gap:0}
+  .rtab{background:none; border:none; border-bottom:2px solid transparent; padding:9px 16px;
+        font-size:12.5px; color:var(--mute); cursor:pointer; letter-spacing:.04em}
+  .rtab:hover{color:var(--text)}
+  .rtab.active{color:var(--text); border-bottom-color:var(--relate)}
+  .rtab span{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--faint); margin-left:5px}
+
+  /* source panel */
+  .source{background:linear-gradient(180deg,#15171D,#13151A)}
+  .src-empty{color:var(--mute); font-size:13px; padding:30px 14px; text-align:center; line-height:1.6}
+  .src-empty b{color:var(--text); display:block; margin-bottom:6px; font-weight:500}
+  .trail-head{display:flex; align-items:center; gap:9px; margin:0 2px 12px}
+  .trail-head .ttl{font-size:13px; letter-spacing:.05em; text-transform:uppercase; font-weight:600}
+  .trail-head .ct{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--signal)}
+  .trail-head .ln{flex:1; height:1px; background:linear-gradient(90deg,var(--signal-deep),transparent)}
+
+  .evidence{
+    background:var(--paper); color:var(--paper-ink); border-radius:3px; padding:11px 13px;
+    margin-bottom:9px; font-family:'IBM Plex Mono',monospace; font-size:12.5px; line-height:1.55;
+    box-shadow:0 1px 0 rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.05);
+    position:relative;
+  }
+  .evidence .eid{display:flex; justify-content:space-between; align-items:center;
+    font-size:10.5px; color:var(--paper-mute); margin-bottom:6px; letter-spacing:.04em}
+  .evidence .eid .ch{display:flex; gap:8px; align-items:center}
+  .evidence .eid .am{color:var(--signal-deep); font-weight:600}
+  .evidence mark{background:rgba(224,163,62,.42); color:inherit; padding:0 1px; border-radius:1px}
+  .evidence mark.rel{background:rgba(94,156,166,.40)}
+
+  /* graph */
+  .graphwrap{border:1px solid var(--line); border-radius:3px; background:var(--panel); padding:6px; margin-bottom:14px}
+  svg.graph{display:block; width:100%; height:auto}
+  .gnode circle{stroke:var(--ink); stroke-width:1.5; cursor:pointer}
+  .gnode text{font-family:'IBM Plex Mono',monospace; font-size:9px; fill:var(--mute)}
+  .gnode.hot circle{stroke:var(--signal)}
+  .gnode.hot text{fill:var(--signal)}
+  .gedge{stroke:var(--relate); stroke-opacity:.35}
+
+  /* trace overlay lines */
+  #trace{position:absolute; inset:0; pointer-events:none; z-index:5; overflow:visible}
+  #trace path{fill:none; stroke:var(--signal-deep); stroke-width:1.4; stroke-opacity:.7}
+  @media(prefers-reduced-motion:no-preference){
+    #trace path{stroke-dasharray:6 4; animation:flow 1.1s linear infinite}
+  }
+  @keyframes flow{to{stroke-dashoffset:-20}}
+  @media(max-width:880px){ #trace{display:none} }
+
+  .foot{font-size:10.5px; color:var(--faint); padding:7px 14px; border-top:1px solid var(--line);
+        display:flex; gap:16px; flex-wrap:wrap; align-items:center; font-family:'IBM Plex Mono',monospace}
+  .foot b{color:var(--mute); font-weight:500}
+
+  /* upload button */
+  .upload-btn{
+    display:flex; align-items:center; gap:7px; padding:8px 14px;
+    background:var(--panel2); border:1px solid var(--line); border-radius:2px;
+    color:var(--mute); font-size:12.5px; cursor:pointer; white-space:nowrap;
+    font-family:'IBM Plex Mono',monospace; letter-spacing:.04em; flex-shrink:0;
+  }
+  .upload-btn:hover{border-color:var(--signal); color:var(--text)}
+  .upload-btn.loading{opacity:.5; pointer-events:none}
+  #upload-input{display:none}
+  .upload-toast{
+    position:fixed; bottom:18px; right:18px; z-index:100;
+    background:var(--panel2); border:1px solid var(--line); border-radius:3px;
+    padding:10px 16px; font-family:'IBM Plex Mono',monospace; font-size:12px;
+    color:var(--text); box-shadow:0 4px 16px rgba(0,0,0,.5); max-width:340px;
+    display:none;
+  }
+  .upload-toast.ok{border-color:var(--ok)}
+  .upload-toast.err{border-color:var(--danger); color:var(--danger)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">
+      <div class="mark mono">hu<b>·</b>dex<span style="color:var(--faint)">/demo</span></div>
+      <div class="tag">pattern intelligence</div>
+    </div>
+    <div class="search">
+      <span class="ico mono">&gt;</span>
+      <input id="q" type="text" placeholder="interrogate the corpus — e.g. off the books cash payment" aria-label="Query the corpus" autocomplete="off">
+      <span class="hint mono">deterministic · no LLM</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n mono" id="s-docs">—</div><div class="l">records</div></div>
+      <div class="stat" style="--n-col:var(--tda)"><div class="n mono" id="s-betti1" style="color:var(--tda)">—</div><div class="l">H1 loops</div></div>
+      <div class="stat clean"><div class="n mono">0</div><div class="l">hallucinations</div></div>
+      <div class="stat"><div class="n mono">100%</div><div class="l">traceable</div></div>
+    </div>
+    <button class="upload-btn" id="upload-btn" onclick="document.getElementById('upload-input').click()">
+      ↑ load corpus
+    </button>
+    <input type="file" id="upload-input" accept=".csv,.json,.txt,.xml,.pdf,.docx,.xlsx,.xls">
+    <div class="upload-toast" id="upload-toast"></div>
+  </header>
+
+  <div class="work">
+    <nav class="rail" id="rail" aria-label="Finding lenses">
+      <div class="lbl">Lenses</div>
+    </nav>
+
+    <section class="col center" aria-label="Findings">
+      <div class="col-head">
+        <h2 id="lens-title">Anomalies</h2>
+        <span class="sub" id="lens-sub"></span>
+      </div>
+      <div id="findings"></div>
+    </section>
+
+    <section class="col source" aria-label="Source trail" id="sourceCol">
+      <div class="rtabs" id="rtabs" style="display:none">
+        <button class="rtab active" id="rtab-graph"   onclick="switchRTab('graph')">Graph</button>
+        <button class="rtab"        id="rtab-trail"   onclick="switchRTab('trail')">Audit Trail <span id="rtab-trail-ct"></span></button>
+      </div>
+      <div id="graphHost"></div>
+      <div id="source"></div>
+    </section>
+
+    <svg id="trace"><path id="tracePath" d=""></path></svg>
+  </div>
+
+  <div class="foot">
+    <span><b>engine</b> tf-idf · kmeans themes · LOF+centroid anomalies · co-occurrence graph</span>
+    <span><b>corpus</b> <span id="f-docs">—</span> internal records, fully processed</span>
+    <span><b>note</b> synthetic demo data with a planted off-book payment scheme</span>
+  </div>
+</div>
+
+<script>
+// DATA is loaded from the server — see init() below
+let DATA = null;
+const _DATA_PLACEHOLDER = {
   "meta": {
     "n_docs": 112,
     "theme_quality": 0.187,
     "n_themes": 8,
-    "n_anomalies": 4,
+    "n_anomalies": 9,
     "n_relationships": 14
   },
   "documents": [
@@ -1131,8 +1414,8 @@
   "themes": [
     {
       "kind": "theme",
-      "title": "Theme: coordinating, depot, hamburg",
-      "detail": "8 documents share this pattern. Key terms: coordinating, depot, hamburg, hamburg depot, shipment hamburg, depot delayed",
+      "title": "Theme: 08, hamburg depot, hamburg",
+      "detail": "8 documents share this pattern. Key terms: 08, hamburg depot, hamburg, coordinating, coordinating carrier, shipment",
       "score": 8.0,
       "sources": [
         "DOC-0062",
@@ -1146,20 +1429,20 @@
       ],
       "extra": {
         "terms": [
-          "coordinating",
-          "depot",
-          "hamburg",
+          "08",
           "hamburg depot",
-          "shipment hamburg",
-          "depot delayed"
+          "hamburg",
+          "coordinating",
+          "coordinating carrier",
+          "shipment"
         ],
         "size": 8
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: terms, purchase order, day terms",
-      "detail": "11 documents share this pattern. Key terms: terms, purchase order, day terms, standard 30, processed, processed standard",
+      "title": "Theme: day terms, day, processed",
+      "detail": "11 documents share this pattern. Key terms: day terms, day, processed, processed standard, purchase, purchase order",
       "score": 11.0,
       "sources": [
         "DOC-0008",
@@ -1176,20 +1459,20 @@
       ],
       "extra": {
         "terms": [
-          "terms",
-          "purchase order",
           "day terms",
-          "standard 30",
+          "day",
           "processed",
-          "processed standard"
+          "processed standard",
+          "purchase",
+          "purchase order"
         ],
         "size": 11
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: anand, priya, priya anand",
-      "detail": "36 documents share this pattern. Key terms: anand, priya, priya anand, expense report, policy, policy approved",
+      "title": "Theme: priya anand, priya, anand",
+      "detail": "36 documents share this pattern. Key terms: priya anand, priya, anand, expense report, policy approved, policy",
       "score": 36.0,
       "sources": [
         "DOC-0107",
@@ -1231,20 +1514,20 @@
       ],
       "extra": {
         "terms": [
-          "anand",
-          "priya",
           "priya anand",
+          "priya",
+          "anand",
           "expense report",
-          "policy",
-          "policy approved"
+          "policy approved",
+          "policy"
         ],
         "size": 36
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: reports, customs, route lyon",
-      "detail": "11 documents share this pattern. Key terms: reports, customs, route lyon, customs onward, container, onward route",
+      "title": "Theme: cleared customs, container acc, reports container",
+      "detail": "11 documents share this pattern. Key terms: cleared customs, container acc, reports container, route lyon, container, cleared",
       "score": 11.0,
       "sources": [
         "DOC-0074",
@@ -1261,20 +1544,20 @@
       ],
       "extra": {
         "terms": [
-          "reports",
-          "customs",
+          "cleared customs",
+          "container acc",
+          "reports container",
           "route lyon",
-          "customs onward",
           "container",
-          "onward route"
+          "cleared"
         ],
         "size": 11
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: interview, cycle, interview scorecards",
-      "detail": "13 documents share this pattern. Key terms: interview, cycle, interview scorecards, strong shortlist, strong, shortlist cycle",
+      "title": "Theme: cycle, shared interview, shortlist",
+      "detail": "13 documents share this pattern. Key terms: cycle, shared interview, shortlist, shortlist cycle, scorecards, interview scorecards",
       "score": 13.0,
       "sources": [
         "DOC-0041",
@@ -1293,20 +1576,20 @@
       ],
       "extra": {
         "terms": [
-          "interview",
           "cycle",
-          "interview scorecards",
-          "strong shortlist",
-          "strong",
-          "shortlist cycle"
+          "shared interview",
+          "shortlist",
+          "shortlist cycle",
+          "scorecards",
+          "interview scorecards"
         ],
         "size": 13
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: payroll run, run, double",
-      "detail": "9 documents share this pattern. Key terms: payroll run, run, double, totals, checked totals, checked",
+      "title": "Theme: double, run approved, run",
+      "detail": "9 documents share this pattern. Key terms: double, run approved, run, checked totals, totals account, totals",
       "score": 9.0,
       "sources": [
         "DOC-0082",
@@ -1321,20 +1604,20 @@
       ],
       "extra": {
         "terms": [
-          "payroll run",
-          "run",
           "double",
-          "totals",
+          "run approved",
+          "run",
           "checked totals",
-          "checked"
+          "totals account",
+          "totals"
         ],
         "size": 9
       }
     },
     {
       "kind": "theme",
-      "title": "Theme: clean, background, candidate background",
-      "detail": "6 documents share this pattern. Key terms: clean, background, candidate background, candidate, check, clean start",
+      "title": "Theme: agreed, candidate, clean",
+      "detail": "6 documents share this pattern. Key terms: agreed, candidate, clean, reference check, clean start, background",
       "score": 6.0,
       "sources": [
         "DOC-0037",
@@ -1346,12 +1629,12 @@
       ],
       "extra": {
         "terms": [
-          "clean",
-          "background",
-          "candidate background",
+          "agreed",
           "candidate",
-          "check",
-          "clean start"
+          "clean",
+          "reference check",
+          "clean start",
+          "background"
         ],
         "size": 6
       }
@@ -1359,7 +1642,7 @@
     {
       "kind": "theme",
       "title": "Theme: ref, invoice ref, invoice",
-      "detail": "18 documents share this pattern. Key terms: ref, invoice ref, invoice, hardware invoice, confirmed delivery, 12 400",
+      "detail": "18 documents share this pattern. Key terms: ref, invoice ref, invoice, delivery office, confirmed delivery, 400",
       "score": 18.0,
       "sources": [
         "DOC-0014",
@@ -1386,9 +1669,9 @@
           "ref",
           "invoice ref",
           "invoice",
-          "hardware invoice",
+          "delivery office",
           "confirmed delivery",
-          "12 400"
+          "400"
         ],
         "size": 18
       }
@@ -1397,9 +1680,54 @@
   "anomalies": [
     {
       "kind": "anomaly",
+      "title": "Anomaly in DOC-0108",
+      "detail": "Marcus Vale: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "score": 0.9918901939558205,
+      "sources": [
+        "DOC-0108"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-25"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0110",
+      "detail": "Tomas Berg: the shell entity in Valletta receives the transfer, route REF-77310, stay quiet about it.",
+      "score": 0.9276549297836878,
+      "sources": [
+        "DOC-0110"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-27"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0109",
+      "detail": "Per Marcus Vale, the kickback to David Okoye gets coded as marketing; EUR 120,000, strictly off the books.",
+      "score": 0.9140101791042136,
+      "sources": [
+        "DOC-0109"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-26"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
       "title": "Anomaly in DOC-0063",
       "detail": "David Okoye escalated a warehouse capacity issue affecting the EUR 80k order. Same as last month, nothing unusual.",
-      "score": 0.9020924568173783,
+      "score": 0.9020924568173774,
       "sources": [
         "DOC-0063"
       ],
@@ -1407,15 +1735,14 @@
         "meta": {
           "channel": "logistics",
           "date": "2025-08-08"
-        },
-        "keywords": []
+        }
       }
     },
     {
       "kind": "anomaly",
       "title": "Anomaly in DOC-0032",
       "detail": "Recruiter update from Priya Anand: pipeline healthy, two senior roles still open. Quick one, handled.",
-      "score": 0.8279204690413398,
+      "score": 0.8279204690413394,
       "sources": [
         "DOC-0032"
       ],
@@ -1423,15 +1750,44 @@
         "meta": {
           "channel": "hiring",
           "date": "2025-08-05"
-        },
-        "keywords": []
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0105",
+      "detail": "Marcus Vale the off-book transfer to ACC-99812 must never appear in the ledger; settle quietly offshore.",
+      "score": 0.8271244492019435,
+      "sources": [
+        "DOC-0105"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-22"
+        }
+      }
+    },
+    {
+      "kind": "anomaly",
+      "title": "Anomaly in DOC-0111",
+      "detail": "Per Marcus Vale, the kickback to Priya Anand gets coded as marketing; EUR 120,000, strictly off the books.",
+      "score": 0.8259493949321208,
+      "sources": [
+        "DOC-0111"
+      ],
+      "extra": {
+        "meta": {
+          "channel": "comms_misc",
+          "date": "2025-08-28"
+        }
       }
     },
     {
       "kind": "anomaly",
       "title": "Anomaly in DOC-0051",
       "detail": "Recruiter update from Tomas Berg: pipeline healthy, two senior roles still open. Routine, closing the ticket.",
-      "score": 0.7761009232929286,
+      "score": 0.7761009232929281,
       "sources": [
         "DOC-0051"
       ],
@@ -1439,15 +1795,14 @@
         "meta": {
           "channel": "hiring",
           "date": "2025-08-24"
-        },
-        "keywords": []
+        }
       }
     },
     {
       "kind": "anomaly",
       "title": "Anomaly in DOC-0086",
       "detail": "Yuki Sato submitted the quarterly VAT filing; refund of EUR 4,200 expected. Adding to the tracker.",
-      "score": 0.7430140717194689,
+      "score": 0.7430140717194686,
       "sources": [
         "DOC-0086"
       ],
@@ -1455,8 +1810,7 @@
         "meta": {
           "channel": "finance_routine",
           "date": "2025-08-03"
-        },
-        "keywords": []
+        }
       }
     }
   ],
@@ -2032,4 +2386,581 @@
       }
     ]
   }
+};
+// (placeholder above is never used — DATA is always fetched from /api/findings + /api/documents)
+
+const LENSES = [
+  {key:'suspicious',    cls:'susp',  label:'Suspicious',    title:'Suspicious',
+     sub:'keyword-confirmed financial crime signals'},
+  {key:'anomalies',     cls:'anom',  label:'Anomalies',     title:'Anomalies',
+     sub:'documents unlike the rest of the corpus'},
+  {key:'topology',      cls:'topo',  label:'Topology',      title:'Topology',
+     sub:'persistent homology H0/H1 fingerprint (ripser)'},
+  {key:'relationships', cls:'rel',   label:'Relationships', title:'Relationships',
+     sub:'actors that co-occur across records'},
+  {key:'themes',        cls:'theme', label:'Themes',        title:'Themes',
+     sub:'unsupervised clusters of shared pattern'},
+];
+
+let state = {lens:'anomalies', selected:null, queryHits:null, rtab:'graph'};
+
+function switchRTab(tab){
+  state.rtab = tab;
+  document.getElementById('rtab-graph').classList.toggle('active', tab==='graph');
+  document.getElementById('rtab-trail').classList.toggle('active', tab==='trail');
+  document.getElementById('graphHost').style.display = tab==='graph' ? '' : 'none';
+  document.getElementById('source').style.display    = tab==='trail' ? '' : 'none';
 }
+
+// ---------- helpers ----------
+let docById = {};
+let maxAnom = 0.0001;
+
+function initDerivedState(){
+  docById = Object.fromEntries(DATA.documents.map(d=>[d.id,d]));
+  maxAnom = Math.max(...DATA.anomalies.map(a=>a.score), ...(DATA.suspicious||[]).map(a=>a.score), 0.0001);
+  if(!DATA.topology) DATA.topology = _buildTopologyFindings();
+}
+
+function _buildTopologyFindings(){
+  const tda = DATA.meta.tda || {};
+  if(!tda.available){
+    return [{kind:'topology', title:'Persistent Homology — unavailable',
+      detail:'ripser not installed. Add it to requirements to enable TDA.',
+      score:0, sources:[], extra:{}}];
+  }
+  const items = [];
+  (tda.h1_features||[]).forEach((h,i)=>{
+    items.push({kind:'topology',
+      title:`H1 loop #${i+1} — persistence ${h.persistence.toFixed(4)}`,
+      detail:`Topological 1-cycle in the corpus embedding. Born at distance ${h.birth.toFixed(4)}, `+
+             `dies at ${h.death.toFixed(4)}. Persistent loops suggest sub-groups that share vocabulary `+
+             `without fully merging — potential hidden clusters or coordinated behaviour.`,
+      score: h.persistence, sources:[], extra:{birth:h.birth, death:h.death, persistence:h.persistence, index:i}});
+  });
+  if(!items.length) items.push({kind:'topology', title:'No persistent H1 features detected',
+    detail:`Betti-0=${tda.betti_0}, Betti-1=${tda.betti_1}. Corpus forms a single well-connected component.`,
+    score:0, sources:[], extra:{}});
+  return items;
+}
+
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function highlight(text, terms, cls){
+  let html = esc(text);
+  (terms||[]).filter(Boolean).forEach(t=>{
+    const re = new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','ig');
+    html = html.replace(re, '<mark'+(cls?(' class="'+cls+'"'):'')+'>$1</mark>');
+  });
+  return html;
+}
+
+// terms to highlight in sources, per finding kind — all data-derived, none hardcoded
+function termsFor(f){
+  if(f.kind==='theme') return f.extra.terms||[];
+  if(f.kind==='relationship') return [f.extra.a, f.extra.b];
+  if(f.kind==='anomaly') return f.extra.terms||[];
+  if(f.kind==='suspicious') return [...(f.extra.keywords||[]), ...(f.extra.terms||[])];
+  if(f.kind==='query') return f._terms||[];
+  return [];
+}
+
+// ---------- render rail ----------
+function renderRail(){
+  const rail = document.getElementById('rail');
+  rail.querySelectorAll('.lens').forEach(e=>e.remove());
+  LENSES.forEach(L=>{
+    const count = DATA[L.key].length;
+    const b = document.createElement('button');
+    b.className = 'lens '+L.cls;
+    b.setAttribute('aria-selected', state.lens===L.key && !state.queryHits);
+    b.innerHTML = `<span class="nm"><span class="dot"></span>${L.label}</span><span class="ct">${count}</span>`;
+    b.onclick = ()=>{ state.lens=L.key; state.selected=null; state.queryHits=null;
+      document.getElementById('q').value=''; render(); };
+    rail.appendChild(b);
+  });
+}
+
+// ---------- render findings column ----------
+function activeList(){
+  if(state.queryHits) return state.queryHits;
+  return [...DATA[state.lens]].sort((a,b)=>b.score-a.score);
+}
+function renderFindings(){
+  const host = document.getElementById('findings');
+  const L = LENSES.find(x=>x.key===state.lens);
+  if(state.queryHits){
+    document.getElementById('lens-title').textContent = 'Query results';
+    document.getElementById('lens-sub').textContent = state.queryHits.length+' traceable hits';
+  } else {
+    document.getElementById('lens-title').textContent = L.title;
+    document.getElementById('lens-sub').textContent = L.sub;
+  }
+  host.innerHTML='';
+  const list = activeList();
+  if(!list.length){ host.innerHTML='<div class="src-empty">No matches in the corpus.</div>'; return; }
+  list.forEach((f,i)=>{
+    const card = document.createElement('div');
+    card.className = 'find k-'+f.kind;
+    card.id = 'find-'+i;
+    card.setAttribute('role','button'); card.tabIndex=0;
+    card.setAttribute('aria-selected', state.selected===f);
+    let right='';
+    if(f.kind==='anomaly'||f.kind==='suspicious'){
+      const pct = Math.round(100*f.score/maxAnom);
+      const col = f.kind==='suspicious' ? 'var(--danger)' : 'var(--signal)';
+      right = `<span class="sev"><span class="bar"><i style="width:${pct}%;background:${col}"></i></span><span class="v" style="color:${col}">${f.score.toFixed(2)}</span></span>`;
+    } else if(f.kind==='query'){
+      right = `<span class="chip">sim ${f.score.toFixed(2)}</span>`;
+    } else {
+      right = `<span class="chip">${f.sources.length} src</span>`;
+    }
+    let why='';
+    if((f.kind==='anomaly'||f.kind==='suspicious') && f.extra && f.extra.terms && f.extra.terms.length){
+      why = `<div class="why">flagged by <span>${f.extra.terms.slice(0,5).map(esc).join('</span><span>')}</span></div>`;
+    }
+    let kw='';
+    if(f.kind==='suspicious' && f.extra && f.extra.keywords && f.extra.keywords.length){
+      kw = `<div class="keywords">matched <span>${f.extra.keywords.map(esc).join('</span><span>')}</span></div>`;
+    }
+    card.innerHTML = `<div class="ft"><span class="title">${esc(f.title)}</span>${right}</div>
+      <div class="detail">${esc(f.detail)}</div>
+      ${kw}
+      ${why}
+      <div class="meta">${f.sources.length} source${f.sources.length>1?'s':''} · click to trace</div>`;
+    const sel = ()=>{ state.selected=f; if(state.lens==='relationships') state.rtab='graph'; render(); };
+    card.onclick = sel;
+    card.onkeydown = e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();sel();} };
+    host.appendChild(card);
+  });
+}
+
+// ---------- render source trail ----------
+function renderSource(){
+  const host = document.getElementById('source');
+  const f = state.selected;
+  const GRAPH_LENSES = ['suspicious','anomalies','relationships','themes','topology'];
+  if(!f){
+    // on graph lenses with no selection the graph fills the panel — hide empty state
+    if(GRAPH_LENSES.includes(state.lens) && !state.queryHits){ host.innerHTML=''; return; }
+    host.innerHTML = `<div class="src-empty"><b>Select any finding to trace it.</b>
+      Every theme, anomaly and link resolves to the exact source records it was derived from —
+      nothing is generated, everything is evidence.</div>`;
+    return;
+  }
+  if(f.kind==='topology'){ host.innerHTML=_renderTopologyDetail(f); return; }
+  const ids = f.sources;
+  const terms = termsFor(f);
+  const cls = f.kind==='relationship' ? 'rel' : '';
+  let html = `<div class="trail-head"><span class="ttl">Audit trail</span>
+      <span class="ct">${ids.length} source${ids.length>1?'s':''}</span><span class="ln"></span></div>`;
+  ids.slice(0,40).forEach(id=>{
+    const d = docById[id]; if(!d) return;
+    const am = d.anomaly>=0.6 ? `<span class="am">▲ ${d.anomaly.toFixed(2)}</span>` : '';
+    html += `<div class="evidence" data-doc="${id}">
+      <div class="eid"><span>${id}</span><span class="ch"><span>${d.meta.channel} · ${d.meta.date}</span>${am}</span></div>
+      <div>${highlight(d.text, terms, cls)}</div></div>`;
+  });
+  host.innerHTML = html;
+}
+
+// ---------- graph — routes to the right visualisation per lens ----------
+function renderGraph(){
+  const host   = document.getElementById('graphHost');
+  const rtabs  = document.getElementById('rtabs');
+  const source = document.getElementById('source');
+
+  if(state.queryHits){ host.innerHTML=''; rtabs.style.display='none'; source.style.display=''; return; }
+
+  const GRAPH_LENSES = ['suspicious','anomalies','relationships','themes','topology'];
+  if(!GRAPH_LENSES.includes(state.lens)){ host.innerHTML=''; rtabs.style.display='none'; source.style.display=''; return; }
+
+  // tabs: show when a finding is selected
+  rtabs.style.display = state.selected ? 'flex' : 'none';
+  if(state.selected){
+    document.getElementById('rtab-trail-ct').textContent = state.selected.sources.length;
+    // ensure graph host is visible before switchRTab potentially hides it
+    host.style.display='';
+    switchRTab(state.rtab==='trail' ? 'trail' : 'graph');
+  } else {
+    state.rtab='graph';
+    host.style.display='';
+    source.style.display='none';
+  }
+
+  if(state.lens==='relationships')  _graphRelationships(host);
+  else if(state.lens==='themes')    _graphThemes(host);
+  else if(state.lens==='topology')  _graphTopology(host);
+  else                              _graphScatter(host, state.lens);
+}
+
+// ── scatter: suspicious / anomalies ──────────────────────────────────────────
+function _graphScatter(host, lens){
+  const items = DATA[lens];
+  if(!items||!items.length){ host.innerHTML=''; return; }
+  const W=400, H=260, PAD={t:24,r:20,b:32,l:44};
+  const iw=W-PAD.l-PAD.r, ih=H-PAD.t-PAD.b;
+
+  // x = sequential index (sorted by date), y = score
+  const sorted = [...items].sort((a,b)=>a.extra.meta.date.localeCompare(b.extra.meta.date));
+  const maxScore = Math.max(...sorted.map(s=>s.score), 0.001);
+  const color = lens==='suspicious' ? 'var(--danger)' : 'var(--signal)';
+  const selId = state.selected ? state.selected.sources[0] : null;
+
+  let svg = `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" style="display:block;width:100%;height:auto">`;
+  // axes
+  svg += `<line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+ih}" stroke="var(--line)" stroke-width="1"/>`;
+  svg += `<line x1="${PAD.l}" y1="${PAD.t+ih}" x2="${PAD.l+iw}" y2="${PAD.t+ih}" stroke="var(--line)" stroke-width="1"/>`;
+  svg += `<text x="${PAD.l-6}" y="${PAD.t+4}" text-anchor="end" font-size="9" fill="var(--faint)">1.0</text>`;
+  svg += `<text x="${PAD.l-6}" y="${PAD.t+ih}" text-anchor="end" font-size="9" fill="var(--faint)">0</text>`;
+  svg += `<text x="${PAD.l+iw/2}" y="${H-4}" text-anchor="middle" font-size="9" fill="var(--faint)">documents (by date)</text>`;
+  svg += `<text x="10" y="${PAD.t+ih/2}" text-anchor="middle" font-size="9" fill="var(--faint)" transform="rotate(-90,10,${PAD.t+ih/2})">score</text>`;
+
+  sorted.forEach((f,i)=>{
+    const x = PAD.l + (i+0.5)*(iw/sorted.length);
+    const y = PAD.t + ih*(1 - f.score/maxScore);
+    const docId = f.sources[0];
+    const isSel = docId===selId;
+    const op    = selId ? (isSel ? 1 : 0.25) : 0.85;
+    const r     = isSel ? 7 : 5;
+    svg += `<g class="snode" data-idx="${i}" style="cursor:pointer;opacity:${op}">
+      <circle cx="${x}" cy="${y}" r="${r}" fill="${color}" ${isSel?'stroke="#fff" stroke-width="1.5"':''}/>
+      ${isSel?`<text x="${x}" y="${y-11}" text-anchor="middle" font-size="9" fill="${color}">${esc(docId)}</text>`:''}
+    </g>`;
+  });
+  svg += `</svg></div>
+  <div style="font-size:11px;color:var(--mute);margin:0 4px 10px">
+    Each dot = one document · y-axis = ${lens==='suspicious'?'suspicion':'anomaly'} score · click to trace
+  </div>`;
+  host.innerHTML = svg;
+  host.querySelectorAll('.snode').forEach((g,i)=>{
+    g.onclick=()=>{
+      state.selected = sorted[parseInt(g.getAttribute('data-idx'))];
+      state.rtab='trail';
+      render();
+    };
+  });
+}
+
+// ── themes: bubble chart ──────────────────────────────────────────────────────
+function _graphThemes(host){
+  const themes = DATA.themes;
+  if(!themes||!themes.length){ host.innerHTML=''; return; }
+  const THEME_COLORS=['#5E9CA6','#9C7BC4','#6BAF8A','#C47B7B','#A69C5E','#7B9CC4','#C49C7B','#7BC4A0'];
+  const W=400, H=280;
+  const maxDocs = Math.max(...themes.map(t=>t.score));
+  const selTitle = state.selected ? state.selected.title : null;
+
+  // pack bubbles in a grid
+  const cols = Math.ceil(Math.sqrt(themes.length));
+  const cw=W/cols, rh=H/Math.ceil(themes.length/cols);
+
+  let svg = `<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" style="display:block;width:100%;height:auto">`;
+  themes.forEach((t,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const cx=cw*(col+0.5), cy=rh*(row+0.5);
+    const r = 14 + 28*(t.score/maxDocs);
+    const color = THEME_COLORS[i%THEME_COLORS.length];
+    const isSel = t.title===selTitle;
+    const op    = selTitle ? (isSel?1:0.3) : 0.85;
+    const label = t.extra.terms ? t.extra.terms.slice(0,2).join(', ') : t.title.replace('Theme: ','');
+    svg += `<g class="tnode" data-idx="${i}" style="cursor:pointer;opacity:${op}">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="${color}" fill-opacity="0.25" stroke="${color}" stroke-width="${isSel?2.5:1.5}"/>
+      <text x="${cx}" y="${cy-4}" text-anchor="middle" font-size="9.5" fill="${color}" font-weight="${isSel?700:400}">${esc(label)}</text>
+      <text x="${cx}" y="${cy+10}" text-anchor="middle" font-size="8.5" fill="var(--faint)">${t.score|0} docs</text>
+    </g>`;
+  });
+  svg += `</svg></div>
+  <div style="font-size:11px;color:var(--mute);margin:0 4px 10px">
+    Bubble size = document count · click a theme to trace its sources
+  </div>`;
+  host.innerHTML = svg;
+  host.querySelectorAll('.tnode').forEach(g=>{
+    g.onclick=()=>{
+      state.selected = themes[parseInt(g.getAttribute('data-idx'))];
+      state.rtab='trail';
+      render();
+    };
+  });
+}
+
+// ── relationships: actor co-occurrence graph ──────────────────────────────────
+function _graphRelationships(host){
+  const {nodes, edges} = DATA.graph;
+  const W=360, H=300, cx=W/2, cy=H/2, R=110;
+  const pos = {};
+  nodes.forEach((n,i)=>{
+    const a = (i/nodes.length)*Math.PI*2 - Math.PI/2;
+    pos[n.id] = {x:cx+R*Math.cos(a), y:cy+R*Math.sin(a)};
+  });
+
+  // separate suspicious vs anomaly-only exposure per actor
+  const suspDocSet = new Set((DATA.suspicious||[]).map(f=>f.sources[0]));
+  const anomDocSet = new Set((DATA.anomalies||[]).map(f=>f.sources[0]));
+  // build per-actor exposure maps using relationship sources
+  const actorSuspExp = {}, actorAnomExp = {};
+  edges.forEach(e=>{
+    (e.sources||[]).forEach(s=>{
+      if(suspDocSet.has(s)){ actorSuspExp[e.a]=(actorSuspExp[e.a]||0)+1; actorSuspExp[e.b]=(actorSuspExp[e.b]||0)+1; }
+      else if(anomDocSet.has(s)){ actorAnomExp[e.a]=(actorAnomExp[e.a]||0)+1; actorAnomExp[e.b]=(actorAnomExp[e.b]||0)+1; }
+    });
+  });
+  // Supplement: use server-computed per-type exposure for actors whose flagged
+  // docs don't appear in co-occurrence edge sources (flagged docs are usually solo)
+  nodes.forEach(n=>{
+    if((actorSuspExp[n.id]||0)===0 && (actorAnomExp[n.id]||0)===0){
+      if((n.susp_exposure||0)>0) actorSuspExp[n.id] = n.susp_exposure;
+      else if((n.anom_exposure||0)>0) actorAnomExp[n.id] = n.anom_exposure;
+      else if((n.exposure||0)>0) actorAnomExp[n.id] = n.exposure;
+    }
+  });
+
+  const selA = state.selected ? state.selected.extra.a : null;
+  const selB = state.selected ? state.selected.extra.b : null;
+  const hasSel = !!(selA && selB);
+
+  let svg = `<div class="graphwrap"><svg class="graph" viewBox="0 0 ${W} ${H}" role="img" aria-label="Actor co-occurrence network">`;
+  edges.forEach(e=>{
+    const p1=pos[e.a], p2=pos[e.b]; if(!p1||!p2) return;
+    const isSel = hasSel && ((e.a===selA&&e.b===selB)||(e.a===selB&&e.b===selA));
+    svg += `<line class="gedge" x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}"
+      stroke="var(--relate)" stroke-width="${isSel?Math.min(4,e.w)+2:Math.min(4,e.w)}"
+      stroke-opacity="${hasSel?(isSel?1:0.12):0.7}"/>`;
+  });
+  const maxDocs = Math.max(...nodes.map(x=>x.docs));
+  nodes.forEach(n=>{
+    const p=pos[n.id];
+    const r=5+9*(n.docs/maxDocs);
+    const isSel=hasSel&&(n.id===selA||n.id===selB);
+    const isSupp = (actorSuspExp[n.id]||0) > 0;
+    const isAnom = !isSupp && (actorAnomExp[n.id]||0) > 0;
+    const nodeColor = isSel?'var(--relate)' : isSupp?'var(--danger)' : isAnom?'var(--signal)' : 'var(--panel2)';
+    const labelColor = isSel?'var(--relate)' : isSupp?'var(--danger)' : isAnom?'var(--signal)' : 'var(--mute)';
+    const rr=isSel?r+3:r;
+    // invisible large hit area so the whole node+label region is clickable
+    svg += `<g class="gnode" data-actor="${n.id}" style="cursor:pointer;opacity:${hasSel&&!isSel?0.2:1}">
+      <rect x="${p.x-40}" y="${p.y-rr-18}" width="80" height="${rr*2+26}" fill="transparent"/>
+      <circle cx="${p.x}" cy="${p.y}" r="${rr}" fill="${nodeColor}" ${isSel?'stroke="var(--relate)" stroke-width="2"':''}/>
+      <text x="${p.x}" y="${p.y-rr-5}" text-anchor="middle"
+        style="fill:${labelColor};font-weight:${isSel?700:400}">${esc(n.id)}</text>
+    </g>`;
+  });
+  svg += `</svg></div>
+  <div style="font-size:11.5px;color:var(--mute);margin:0 4px 12px;line-height:1.5">
+    Node size = documents touched · <span style="color:var(--danger)">red</span> = suspicious exposure · <span style="color:var(--signal)">amber</span> = anomaly exposure · dark = clean.</div>`;
+  host.innerHTML = svg;
+  host.querySelectorAll('.gnode').forEach(g=>{
+    g.onclick=()=>{
+      const actor = g.getAttribute('data-actor');
+      const rels = DATA.relationships
+        .filter(r => r.extra.a===actor || r.extra.b===actor)
+        .sort((a,b) => b.score-a.score);
+      if(!rels.length) return;
+      // cycle: if current selection is already one of this actor's rels, go to next
+      const curIdx = rels.indexOf(state.selected);
+      const next = rels[(curIdx + 1) % rels.length];
+      state.selected = next;
+      state.rtab = 'graph';
+      render();
+      // scroll matching card into view
+      const sorted = [...DATA.relationships].sort((a,b)=>b.score-a.score);
+      const idx = sorted.indexOf(next);
+      const cards = document.querySelectorAll('#findings .find');
+      if(cards[idx]) cards[idx].scrollIntoView({block:'nearest', behavior:'smooth'});
+    };
+  });
+}
+
+// ── topology: persistence barcode ────────────────────────────────────────────
+function _graphTopology(host){
+  const tda = DATA.meta.tda || {};
+  if(!tda.available){
+    host.innerHTML=`<div class="graphwrap" style="padding:18px;color:var(--mute);font-size:12px">
+      ripser not available in this environment.</div>`;
+    return;
+  }
+  const feats = tda.h1_features || [];
+  const betti0=tda.betti_0||0, betti1=tda.betti_1||0;
+  const W=380, H=Math.max(80,feats.length*26+50), PAD={t:30,r:20,b:24,l:44};
+  const iw=W-PAD.l-PAD.r;
+  const maxDeath=Math.max(...feats.map(f=>f.death),tda.max_persistence||0,0.1);
+  const selIdx=state.selected?(state.selected.extra.index||0):-1;
+  let svg=`<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" style="display:block;width:100%;height:auto">`;
+  svg+=`<text x="${PAD.l+iw/2}" y="14" text-anchor="middle" font-size="10" fill="var(--tda)" font-weight="600">Persistence Barcode — H1 features</text>`;
+  svg+=`<text x="${PAD.l}" y="${PAD.t-4}" text-anchor="start" font-size="8" fill="var(--faint)">0</text>`;
+  svg+=`<text x="${W-PAD.r}" y="${PAD.t-4}" text-anchor="end" font-size="8" fill="var(--faint)">${maxDeath.toFixed(2)}</text>`;
+  svg+=`<line x1="${PAD.l}" y1="${H-PAD.b}" x2="${PAD.l+iw}" y2="${H-PAD.b}" stroke="var(--line)" stroke-width="1"/>`;
+  if(!feats.length){
+    svg+=`<text x="${PAD.l+iw/2}" y="${H/2}" text-anchor="middle" font-size="10" fill="var(--faint)">No H1 features detected</text>`;
+  } else {
+    feats.forEach((h,i)=>{
+      const y=PAD.t+i*26;
+      const x1=PAD.l+(h.birth/maxDeath)*iw, x2=PAD.l+(h.death/maxDeath)*iw;
+      const isSel=i===selIdx, op=selIdx>=0?(isSel?1:0.4):0.9;
+      svg+=`<g class="bnode" data-idx="${i}" style="cursor:pointer;opacity:${op}">
+        <rect x="${PAD.l}" y="${y+2}" width="${iw}" height="18" fill="transparent"/>
+        <line x1="${x1}" y1="${y+11}" x2="${x2}" y2="${y+11}"
+          stroke="var(--tda)" stroke-width="${isSel?4:2.5}" stroke-linecap="round"/>
+        <text x="${PAD.l-4}" y="${y+15}" text-anchor="end" font-size="8" fill="var(--faint)">${i+1}</text>
+        <text x="${x2+4}" y="${y+15}" font-size="7.5" fill="var(--tda)">${h.persistence.toFixed(3)}</text>
+      </g>`;
+    });
+  }
+  svg+=`</svg></div>
+  <div style="font-size:11px;color:var(--mute);margin:0 4px 10px">
+    Betti-0: <span style="color:var(--tda)">${betti0}</span> components ·
+    Betti-1: <span style="color:var(--tda)">${betti1}</span> loops ·
+    longer bars = more persistent structure · click to inspect
+  </div>`;
+  host.innerHTML=svg;
+  host.querySelectorAll('.bnode').forEach(g=>{
+    g.onclick=()=>{
+      const idx=parseInt(g.getAttribute('data-idx'));
+      state.selected=DATA.topology[idx]||null; state.rtab='trail'; render();
+    };
+  });
+}
+
+function _renderTopologyDetail(f){
+  const tda=DATA.meta.tda||{};
+  if(!tda.available) return `<div class="src-empty"><b>ripser not available.</b>${f.detail}</div>`;
+  const maxP=tda.max_persistence||0.001;
+  const feats=tda.h1_features||[];
+  let rows=feats.map((h,i)=>`<div class="h1-row">
+    <span class="ph">${h.persistence.toFixed(4)}</span>
+    <div style="flex:1"><div class="topo-bar"><i style="width:${Math.round(100*h.persistence/maxP)}%"></i></div></div>
+    <span class="span">[${h.birth.toFixed(3)} → ${h.death.toFixed(3)}]</span>
+  </div>`).join('');
+  return `<div style="padding:0 2px">
+    <div class="trail-head"><span class="ttl">Topological fingerprint</span><span class="ln"></span></div>
+    <div class="topo-panel">
+      <div class="topo-head">Persistent Homology (ripser)</div>
+      <div class="topo-row">
+        <div class="topo-stat"><div class="tv">${tda.betti_0}</div><div class="tl">Betti-0 (components)</div></div>
+        <div class="topo-stat"><div class="tv">${tda.betti_1}</div><div class="tl">Betti-1 (loops)</div></div>
+        <div class="topo-stat"><div class="tv">${tda.max_persistence!=null?tda.max_persistence.toFixed(3):'—'}</div><div class="tl">max persistence</div></div>
+      </div>
+      ${feats.length?`<div class="topo-bar-lbl">H1 features ranked by persistence</div><div class="h1-list">${rows}</div>`:'<div style="color:var(--faint);font-size:12px">No finite H1 features found.</div>'}
+    </div>
+    <div style="font-size:12px;color:var(--mute);line-height:1.6;padding:0 2px">
+      <b style="color:var(--text)">What this means:</b> Persistent H1 loops indicate sub-groups of documents
+      that share language enough to form a cycle but not enough to fully merge — a topological signal
+      of coordinated but distributed activity. High Betti-0 means fragmented corpus.
+    </div>
+  </div>`;
+}
+
+// ---------- trace lines overlay ----------
+function drawTrace(){
+  const svg=document.getElementById('trace'), path=document.getElementById('tracePath');
+  if(!state.selected || window.innerWidth<=880 || state.rtab==='graph' || state.lens==='topology'){ path.setAttribute('d',''); return; }
+  const sel=document.querySelector('.find[aria-selected="true"]');
+  const ev=[...document.querySelectorAll('.evidence')].slice(0,6);
+  if(!sel||!ev.length){ path.setAttribute('d',''); return; }
+  const work=document.querySelector('.work').getBoundingClientRect();
+  const a=sel.getBoundingClientRect();
+  const x1=a.right-work.left, y1=a.top-work.top+a.height/2;
+  let d='';
+  ev.forEach(e=>{
+    const b=e.getBoundingClientRect();
+    const x2=b.left-work.left, y2=b.top-work.top+Math.min(b.height/2,18);
+    const mx=(x1+x2)/2;
+    d+=`M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2} `;
+  });
+  path.setAttribute('d',d);
+}
+
+// ---------- live query — server-side TF-IDF via POST /api/query ----------
+let qt;
+async function runQuery(q){
+  q=q.trim();
+  if(!q){ state.queryHits=null; render(); return; }
+  const res = await fetch('/api/query', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({q, top:8})
+  });
+  if(!res.ok){ return; }
+  const hits = await res.json();
+  state.queryHits = hits;
+  state.selected = hits[0]||null;
+  render();
+}
+
+// ---------- master render ----------
+function render(){
+  if(!DATA) return;
+  renderRail(); renderGraph(); renderFindings(); renderSource();
+  requestAnimationFrame(drawTrace);
+}
+
+// ---------- init — fetch findings + documents from API ----------
+async function init(){
+  const [findings, documents] = await Promise.all([
+    fetch('/api/findings').then(r=>r.json()),
+    fetch('/api/documents').then(r=>r.json()),
+  ]);
+  DATA = {...findings, documents};
+  initDerivedState();
+
+  document.getElementById('s-docs').textContent=DATA.meta.n_docs;
+  document.getElementById('f-docs').textContent=DATA.meta.n_docs;
+  const _tda0=DATA.meta.tda||{};
+  document.getElementById('s-betti1').textContent=_tda0.betti_1!=null?_tda0.betti_1:'—';
+
+  document.getElementById('q').addEventListener('input', e=>{
+    clearTimeout(qt); qt=setTimeout(()=>runQuery(e.target.value), 160);
+  });
+  window.addEventListener('resize', ()=>requestAnimationFrame(drawTrace));
+  document.querySelector('.center').addEventListener('scroll', ()=>requestAnimationFrame(drawTrace), {passive:true});
+  document.getElementById('sourceCol').addEventListener('scroll', ()=>requestAnimationFrame(drawTrace), {passive:true});
+
+  // preselect the top anomaly so the trail is visible on load
+  state.selected = [...DATA.anomalies].sort((a,b)=>b.score-a.score)[0];
+  render();
+}
+
+init();
+
+// ---------- file upload ----------
+function _toast(msg, type){
+  const t = document.getElementById('upload-toast');
+  t.textContent = msg;
+  t.className = 'upload-toast ' + type;
+  t.style.display = 'block';
+  clearTimeout(t._tid);
+  t._tid = setTimeout(()=>{ t.style.display='none'; }, type==='ok' ? 3500 : 6000);
+}
+
+document.getElementById('upload-input').addEventListener('change', async function(){
+  const file = this.files[0]; if(!file) return;
+  const btn = document.getElementById('upload-btn');
+  btn.textContent = '⟳ analysing…'; btn.classList.add('loading');
+  _toast('Uploading and running engine on ' + file.name + ' …', '');
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const res = await fetch('/api/upload', {method:'POST', body:fd});
+    const json = await res.json();
+    if(!res.ok){ _toast('Error: ' + (json.detail||res.statusText), 'err'); return; }
+    // hot-swap DATA
+    DATA = {...json.findings, documents: json.documents};
+    initDerivedState();
+    document.getElementById('s-docs').textContent = DATA.meta.n_docs;
+    document.getElementById('f-docs').textContent = DATA.meta.n_docs;
+    const _tda1=DATA.meta.tda||{};
+    document.getElementById('s-betti1').textContent=_tda1.betti_1!=null?_tda1.betti_1:'—';
+    state.selected = [...DATA.anomalies].sort((a,b)=>b.score-a.score)[0] || null;
+    state.queryHits = null;
+    document.getElementById('q').value = '';
+    render();
+    _toast('Loaded ' + json.n_docs + ' docs from ' + file.name, 'ok');
+  } catch(e){
+    _toast('Upload failed: ' + e.message, 'err');
+  } finally {
+    btn.textContent = '↑ load corpus'; btn.classList.remove('loading');
+    this.value = '';
+  }
+});
+</script>
+</body>
+</html>

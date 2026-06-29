@@ -235,7 +235,7 @@
     </div>
     <div class="stats">
       <div class="stat"><div class="n mono" id="s-docs">—</div><div class="l">records</div></div>
-      <div class="stat" style="--n-col:var(--tda)"><div class="n mono" id="s-betti1" style="color:var(--tda)">—</div><div class="l">H1 loops</div></div>
+      <div class="stat" style="--n-col:var(--tda)"><div class="n mono" id="s-betti1" style="color:var(--tda)">—</div><div class="l">circular patterns</div></div>
       <div class="stat clean"><div class="n mono">0</div><div class="l">hallucinations</div></div>
       <div class="stat"><div class="n mono">100%</div><div class="l">traceable</div></div>
     </div>
@@ -2432,14 +2432,14 @@ function _buildTopologyFindings(){
   const items = [];
   (tda.h1_features||[]).forEach((h,i)=>{
     items.push({kind:'topology',
-      title:`H1 loop #${i+1} — persistence ${h.persistence.toFixed(4)}`,
-      detail:`Topological 1-cycle in the corpus embedding. Born at distance ${h.birth.toFixed(4)}, `+
-             `dies at ${h.death.toFixed(4)}. Persistent loops suggest sub-groups that share vocabulary `+
-             `without fully merging — potential hidden clusters or coordinated behaviour.`,
+      title:`Circular pattern #${i+1} — strength ${h.persistence.toFixed(4)}`,
+      detail:`A group of documents share overlapping language without belonging to a single topic. `+
+             `First detected at similarity ${h.birth.toFixed(4)}, fades at ${h.death.toFixed(4)}. `+
+             `Stronger patterns suggest coordinated or distributed activity across the corpus.`,
       score: h.persistence, sources:[], extra:{birth:h.birth, death:h.death, persistence:h.persistence, index:i}});
   });
-  if(!items.length) items.push({kind:'topology', title:'No persistent H1 features detected',
-    detail:`Betti-0=${tda.betti_0}, Betti-1=${tda.betti_1}. Corpus forms a single well-connected component.`,
+  if(!items.length) items.push({kind:'topology', title:'No circular patterns detected',
+    detail:`The corpus forms one well-connected group with no significant indirect cross-referencing. Separate groups: ${tda.betti_0}, circular patterns: ${tda.betti_1}.`,
     score:0, sources:[], extra:{}});
   return items;
 }
@@ -2785,7 +2785,7 @@ function _graphTopology(host){
   const maxDeath=Math.max(...feats.map(f=>f.death),tda.max_persistence||0,0.1);
   const selIdx=state.selected?(state.selected.extra.index||0):-1;
   let svg=`<div class="graphwrap"><svg viewBox="0 0 ${W} ${H}" style="display:block;width:100%;height:auto">`;
-  svg+=`<text x="${PAD.l+iw/2}" y="14" text-anchor="middle" font-size="10" fill="var(--tda)" font-weight="600">Persistence Barcode — H1 features</text>`;
+  svg+=`<text x="${PAD.l+iw/2}" y="14" text-anchor="middle" font-size="10" fill="var(--tda)" font-weight="600">Circular patterns — by strength</text>`;
   svg+=`<text x="${PAD.l}" y="${PAD.t-4}" text-anchor="start" font-size="8" fill="var(--faint)">0</text>`;
   svg+=`<text x="${W-PAD.r}" y="${PAD.t-4}" text-anchor="end" font-size="8" fill="var(--faint)">${maxDeath.toFixed(2)}</text>`;
   svg+=`<line x1="${PAD.l}" y1="${H-PAD.b}" x2="${PAD.l+iw}" y2="${H-PAD.b}" stroke="var(--line)" stroke-width="1"/>`;
@@ -2807,9 +2807,9 @@ function _graphTopology(host){
   }
   svg+=`</svg></div>
   <div style="font-size:11px;color:var(--mute);margin:0 4px 10px">
-    Betti-0: <span style="color:var(--tda)">${betti0}</span> components ·
-    Betti-1: <span style="color:var(--tda)">${betti1}</span> loops ·
-    longer bars = more persistent structure · click to inspect
+    Separate groups: <span style="color:var(--tda)">${betti0}</span> ·
+    Circular patterns: <span style="color:var(--tda)">${betti1}</span> ·
+    longer bar = stronger pattern · click to inspect
   </div>`;
   host.innerHTML=svg;
   host.querySelectorAll('.bnode').forEach(g=>{
@@ -2831,20 +2831,21 @@ function _renderTopologyDetail(f){
     <span class="span">[${h.birth.toFixed(3)} → ${h.death.toFixed(3)}]</span>
   </div>`).join('');
   return `<div style="padding:0 2px">
-    <div class="trail-head"><span class="ttl">Topological fingerprint</span><span class="ln"></span></div>
+    <div class="trail-head"><span class="ttl">Structural pattern detail</span><span class="ln"></span></div>
     <div class="topo-panel">
-      <div class="topo-head">Persistent Homology (ripser)</div>
+      <div class="topo-head">Structural pattern analysis</div>
       <div class="topo-row">
-        <div class="topo-stat"><div class="tv">${tda.betti_0}</div><div class="tl">Betti-0 (components)</div></div>
-        <div class="topo-stat"><div class="tv">${tda.betti_1}</div><div class="tl">Betti-1 (loops)</div></div>
-        <div class="topo-stat"><div class="tv">${tda.max_persistence!=null?tda.max_persistence.toFixed(3):'—'}</div><div class="tl">max persistence</div></div>
+        <div class="topo-stat"><div class="tv">${tda.betti_0}</div><div class="tl">separate groups</div></div>
+        <div class="topo-stat"><div class="tv">${tda.betti_1}</div><div class="tl">circular patterns</div></div>
+        <div class="topo-stat"><div class="tv">${tda.max_persistence!=null?tda.max_persistence.toFixed(3):'—'}</div><div class="tl">strongest pattern</div></div>
       </div>
-      ${feats.length?`<div class="topo-bar-lbl">H1 features ranked by persistence</div><div class="h1-list">${rows}</div>`:'<div style="color:var(--faint);font-size:12px">No finite H1 features found.</div>'}
+      ${feats.length?`<div class="topo-bar-lbl">Circular patterns ranked by strength</div><div class="h1-list">${rows}</div>`:'<div style="color:var(--faint);font-size:12px">No circular patterns found.</div>'}
     </div>
     <div style="font-size:12px;color:var(--mute);line-height:1.6;padding:0 2px">
-      <b style="color:var(--text)">What this means:</b> Persistent H1 loops indicate sub-groups of documents
-      that share language enough to form a cycle but not enough to fully merge — a topological signal
-      of coordinated but distributed activity. High Betti-0 means fragmented corpus.
+      <b style="color:var(--text)">What this means:</b> Circular patterns indicate groups of documents
+      that share language with each other indirectly — like A references B, B references C, C references A —
+      without forming a single obvious cluster. This is a signal of coordinated but distributed activity.
+      Many separate groups means the corpus is fragmented with low overlap between topics.
     </div>
   </div>`;
 }
